@@ -1,0 +1,26 @@
+{
+  "name": "invochain",
+  "version": "1.0.0",
+  "description": "Website to promote InvoChain, a fast and reliable market maker for tokenized pending invoices",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WongKayJay/InvoChain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WongKayJay/InvoChain/issues"
+  },
+  "homepage": "https://github.com/WongKayJay/InvoChain#readme",
+  "devDependencies": {
+    "vite": "^7.1.9"
+  }
+}
