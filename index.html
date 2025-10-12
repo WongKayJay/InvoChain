@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="InvoChain - Fast and reliable market maker for tokenized pending invoices">
-    <title>InvoChain - Tokenized Invoice Market Maker</title>
+    <meta name="description" content="Invochain helps SMEs unlock liquidity with transparent, secure invoice financing verified on blockchain and backed by escrowed repayments.">
+    <title>Invochain — Unlocking SME Liquidity with Transparent, Secure Invoice Financing</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+    </button>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -22,8 +33,10 @@
                 </button>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
                     <li><a href="#features" class="nav-link">Features</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </div>
@@ -31,70 +44,148 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
+    <section id="home" class="hero parallax" data-parallax data-speed="0.5">
+        <div class="container" data-speed="0.3">
             <div class="hero-content">
-                <h1 class="hero-title">Welcome to InvoChain</h1>
-                <p class="hero-subtitle">Fast and reliable market maker for tokenized pending invoices</p>
+                <h1 class="hero-title">Unlocking SME Liquidity</h1>
+                <p class="hero-subtitle">Transparent, secure invoice financing verified on blockchain — faster access to funding with real‑time, on‑chain audit trails.</p>
                 <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary">Learn More</a>
+                    <a href="#how-it-works" class="btn btn-primary">How It Works</a>
                     <a href="#contact" class="btn btn-secondary">Get Started</a>
+                </div>
+                <div class="trust-badges" style="margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
+                    <span class="badge" style="background:#eef6ff; color:#0a58ca; padding:6px 10px; border-radius:999px; font-size:0.9rem;">Verified by Blockchain</span>
+                    <span class="badge" style="background:#eefaf1; color:#146c43; padding:6px 10px; border-radius:999px; font-size:0.9rem;">Escrow‑Backed Security</span>
+                    <span class="badge" style="background:#fff3cd; color:#8a6d3b; padding:6px 10px; border-radius:999px; font-size:0.9rem;">Shariah‑Compliant & Conventional</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="features parallax" data-parallax data-speed="0.4">
+        <div class="container">
+            <h2 class="section-title" data-speed="0.2">How It Works</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧾</div>
+                    <h3>1) Issue</h3>
+                    <p>Invoice is created and verified with buyers (APIs/portals). A hash is anchored on‑chain to prevent double‑pledge.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💧</div>
+                    <h3>2) Fund</h3>
+                    <p>SMEs receive funding. Repayments are escrowed and tracked. Transparent risk grades guide investor allocations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>3) Pay</h3>
+                    <p>Buyer settles the invoice. On‑chain status moves to paid, creating a complete audit trail for SMEs and investors.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="features">
+    <section id="features" class="features parallax" data-parallax data-speed="0.3">
         <div class="container">
-            <h2 class="section-title">Key Features</h2>
+            <h2 class="section-title" data-speed="0.15">Product Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Fast Transactions</h3>
-                    <p>Lightning-fast processing of tokenized invoices on the blockchain</p>
+                    <div class="feature-icon">✅</div>
+                    <h3>Verified Invoice Authenticity</h3>
+                    <p>Confirm invoices directly with buyers via APIs/portals. Faster approvals, fewer fake invoices.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Secure & Reliable</h3>
-                    <p>Bank-grade security ensuring your assets are always protected</p>
+                    <div class="feature-icon">�</div>
+                    <h3>Escrowed Repayments & Double‑Pledge Prevention</h3>
+                    <p>Blockchain hashes at origination and settlement ensure proper fund use and stronger recovery.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Market Making</h3>
-                    <p>Efficient market making for seamless liquidity and fair pricing</p>
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Real‑Time Tracking & On‑Chain Audit</h3>
+                    <p>Every status is visible — issued → funded → paid — for SMEs and investors.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Global Access</h3>
-                    <p>Access your tokenized invoices from anywhere in the world</p>
+                    <div class="feature-icon">�</div>
+                    <h3>Transparent Risk Grading</h3>
+                    <p>Public performance dashboards by grade and cohort build investor confidence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🪪</div>
+                    <h3>Fast Digital Onboarding</h3>
+                    <p>Automated eKYC/KYB with risk‑based funding limits reduces paperwork and speeds access.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔁</div>
+                    <h3>Optional Resale of Notes</h3>
+                    <p>Controlled secondary resale lets investors rebalance, subject to SC rules.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🕌</div>
+                    <h3>Islamic + Conventional</h3>
+                    <p>Compliant with shariah governance standards while offering conventional options.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💸</div>
+                    <h3>Pricing Clarity</h3>
+                    <p>3% total fee (1.5% SME + 1.5% investor) — simpler and cheaper than 4–6% factoring.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Trust & Safety</h3>
+                    <p>Web‑first UX, verified channels, and transaction IDs reduce scam risk and ensure smooth use.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about parallax" data-parallax data-speed="0.35">
         <div class="container">
-            <h2 class="section-title">About InvoChain</h2>
+            <h2 class="section-title" data-speed="0.2">About Invochain</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>InvoChain revolutionizes the way businesses handle pending invoices by tokenizing them on the blockchain. Our platform provides a fast, secure, and reliable market making service that enables businesses to access liquidity instantly.</p>
-                    <p>With InvoChain, you can transform your pending invoices into liquid assets, improving cash flow and enabling better financial planning for your business.</p>
+                    <p>Invochain helps small and medium enterprises (SMEs) access liquidity by verifying invoices on blockchain, preventing fraud, and building trust with transparent audit trails.</p>
+                    <p>From origination to settlement, every step is anchored on‑chain — enabling faster approvals, escrow‑backed repayments, and real‑time status tracking. Investors gain transparency through public dashboards and risk grading by cohort.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat-card">
-                        <div class="stat-number">$100M+</div>
-                        <div class="stat-label">Volume Processed</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">1000+</div>
-                        <div class="stat-label">Active Users</div>
-                    </div>
-                    <div class="stat-card">
                         <div class="stat-number">99.9%</div>
-                        <div class="stat-label">Uptime</div>
+                        <div class="stat-label">Platform Uptime</div>
                     </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3%</div>
+                        <div class="stat-label">Total Transparent Fee</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">On‑Chain Visibility</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Performance Section -->
+    <section id="pricing" class="features parallax" data-parallax data-speed="0.4">
+        <div class="container">
+            <h2 class="section-title" data-speed="0.25">Pricing & Performance</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💵</div>
+                    <h3>Transparent Fees</h3>
+                    <p>3% total fee — split evenly between SME (1.5%) and investor (1.5%). No hidden charges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Public Dashboards</h3>
+                    <p>View performance by grade and cohort to set expectations and build confidence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h3>Risk‑Based Limits</h3>
+                    <p>Automated eKYC/KYB with risk‑adjusted limits ensures fair access and prudent exposure.</p>
                 </div>
             </div>
         </div>
