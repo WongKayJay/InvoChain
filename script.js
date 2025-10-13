@@ -260,6 +260,32 @@ function initParallax() {
         }
     });
 
+    // Intersection Observer for fade-in and edge effects
+    const fadeObserverOptions = {
+        threshold: [0, 0.1, 0.5, 0.9, 1],
+        rootMargin: '-10% 0px -10% 0px'
+    };
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const section = entry.target;
+            
+            // Fade in when entering viewport
+            if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+                section.classList.add('visible');
+            }
+            
+            // Apply edge fading based on scroll position
+            if (entry.intersectionRatio < 0.9 && entry.intersectionRatio > 0.1) {
+                section.classList.add('fade-edges');
+            } else {
+                section.classList.remove('fade-edges');
+            }
+        });
+    }, fadeObserverOptions);
+
+    sections.forEach(section => fadeObserver.observe(section));
+
     const state = { ticking: false, y: window.scrollY };
 
     const onScroll = () => {
