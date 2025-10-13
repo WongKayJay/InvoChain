@@ -19,48 +19,6 @@ themeToggle?.addEventListener('click', () => {
     }, 300);
 });
 
-// ========== Custom Cursor ==========
-const cursor = document.querySelector('.custom-cursor');
-const cursorFollower = document.querySelector('.custom-cursor-follower');
-
-let mouseX = 0, mouseY = 0;
-let followerX = 0, followerY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    if (cursor) {
-        cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
-    }
-});
-
-// Smooth follower with lerp
-function animateCursorFollower() {
-    followerX += (mouseX - followerX) * 0.25;
-    followerY += (mouseY - followerY) * 0.25;
-    
-    if (cursorFollower) {
-        cursorFollower.style.transform = `translate(${followerX - 20}px, ${followerY - 20}px)`;
-    }
-    
-    requestAnimationFrame(animateCursorFollower);
-}
-animateCursorFollower();
-
-// Add hover effect to interactive elements
-document.addEventListener('mouseover', (e) => {
-    if (e.target.matches('a, button, .btn, .feature-card, .stat-card')) {
-        cursor?.classList.add('hover');
-    }
-});
-
-document.addEventListener('mouseout', (e) => {
-    if (e.target.matches('a, button, .btn, .feature-card, .stat-card')) {
-        cursor?.classList.remove('hover');
-    }
-});
-
 // Mobile Menu Toggle
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.getElementById('navMenu');
@@ -173,6 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
     featureCards.forEach(card => {
         animateObserver.observe(card);
     });
+
+    // Safety: ensure cards become visible even if IntersectionObserver doesn't fire (e.g., older browsers, rare timing)
+    setTimeout(() => {
+        document.querySelectorAll('.feature-card').forEach(card => {
+            if (!card.classList.contains('animate')) {
+                card.classList.add('animate');
+            }
+        });
+    }, 1200);
     
     // Observe stat cards with custom animation
     const statCards = document.querySelectorAll('.stat-card');
