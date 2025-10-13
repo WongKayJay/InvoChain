@@ -45,7 +45,7 @@ class InvoChainApp extends StatelessWidget {
       ),
       textTheme: GoogleFonts.interTextTheme(),
       scaffoldBackgroundColor: const Color(0xFFF8FAFC),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -74,7 +74,7 @@ class InvoChainApp extends StatelessWidget {
       ),
       textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme),
       scaffoldBackgroundColor: const Color(0xFF0F172A),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 4,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
