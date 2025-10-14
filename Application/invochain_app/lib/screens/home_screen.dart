@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: StatCard(
@@ -96,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.green,
                   ),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12),
                 Expanded(
                   child: StatCard(
                     title: 'Active Deals',

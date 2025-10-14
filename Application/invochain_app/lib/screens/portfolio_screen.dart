@@ -51,7 +51,7 @@ class PortfolioScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.trending_up,
                           color: Colors.greenAccent,
                           size: 20,
@@ -79,7 +79,7 @@ class PortfolioScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: StatCard(
@@ -89,7 +89,7 @@ class PortfolioScreen extends StatelessWidget {
                     color: Colors.green,
                   ),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12),
                 Expanded(
                   child: StatCard(
                     title: 'Active',
@@ -175,7 +175,7 @@ class PortfolioScreen extends StatelessWidget {
             const SizedBox(height: 12),
             LinearProgressIndicator(
               value: progressValue,
-              backgroundColor: theme.colorScheme.surfaceVariant,
+              backgroundColor: theme.colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(8),
               minHeight: 8,
             ),

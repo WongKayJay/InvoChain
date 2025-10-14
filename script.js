@@ -93,6 +93,41 @@ contactForm.addEventListener('submit', (e) => {
     contactForm.reset();
 });
 
+// ========== Live Chat Widget ==========
+const liveChatWidget = document.getElementById('liveChatWidget');
+
+// Function to open live chat
+function openLiveChat() {
+    // In a real application, this would open your live chat service
+    // For now, we'll show a placeholder message
+    alert('Live Chat Opening...\n\nOur 24/7 support team will be with you shortly!\n\nFeatures:\n• Instant response\n• Expert guidance\n• Free consultation booking\n• Multi-language support');
+    
+    // In production, integrate with services like:
+    // - Intercom
+    // - Drift
+    // - Zendesk Chat
+    // - Tawk.to
+    // - LiveChat
+    
+    console.log('Live chat opened at:', new Date().toLocaleTimeString());
+}
+
+// Add click handler for chat widget
+if (liveChatWidget) {
+    liveChatWidget.addEventListener('click', openLiveChat);
+}
+
+// Add handler for consultation button in contact section
+document.addEventListener('DOMContentLoaded', () => {
+    const liveChatBtn = document.getElementById('liveChatBtn');
+    if (liveChatBtn) {
+        liveChatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLiveChat();
+        });
+    }
+});
+
 // Add scroll effect to navbar
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');

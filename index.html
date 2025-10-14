@@ -58,10 +58,18 @@
                     <a href="#how-it-works" class="btn btn-primary">How It Works</a>
                     <a href="#contact" class="btn btn-secondary">Get Started</a>
                 </div>
-                <div class="trust-badges" style="margin-top:48px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
+                <!-- Free Trial Banner -->
+                <div class="trial-banner">
+                    <div class="trial-icon">🎉</div>
+                    <div class="trial-title">Free 1 Month Trial</div>
+                    <div class="trial-subtitle">No credit card required • Full platform access • Cancel anytime</div>
+                </div>
+                
+                <div class="trust-badges" style="margin-top:32px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
                     <span class="badge" style="background:#eef6ff; color:#0a58ca; padding:6px 10px; border-radius:999px; font-size:0.9rem;">Verified by Blockchain</span>
                     <span class="badge" style="background:#eefaf1; color:#146c43; padding:6px 10px; border-radius:999px; font-size:0.9rem;">Escrow‑Backed Security</span>
                     <span class="badge" style="background:#fff3cd; color:#8a6d3b; padding:6px 10px; border-radius:999px; font-size:0.9rem;">Shariah‑Compliant & Conventional</span>
+                    <span class="badge" style="background:#fce7f3; color:#9f1239; padding:6px 10px; border-radius:999px; font-size:0.9rem;">24/7 Live Support</span>
                 </div>
                 
                 <!-- Download Buttons -->
@@ -201,6 +209,15 @@
     <section id="pricing" class="features parallax" data-parallax data-speed="0.4">
         <div class="container">
             <h2 class="section-title" data-speed="0.25">Pricing & Performance</h2>
+            
+            <!-- Free Trial Highlight -->
+            <div class="trial-highlight">
+                <div class="trial-icon-large">🎁</div>
+                <h3>Try InvoChain Free for 1 Month</h3>
+                <p>Experience full platform access with no commitment. Cancel anytime during your trial period.</p>
+                <a href="#contact" class="btn btn-primary">Start Free Trial</a>
+            </div>
+            
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">💵</div>
@@ -225,6 +242,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
+            
             <div class="contact-content">
                 <form class="contact-form" id="contactForm">
                     <div class="form-group">
@@ -250,6 +268,14 @@
                     <div class="info-item">
                         <strong>Support:</strong> support@invochain.com
                     </div>
+                    <div class="info-item">
+                        <strong>Live Chat:</strong> Available 24/7
+                    </div>
+                    <div class="info-item consultation-highlight">
+                        <strong>📞 Free Consultation</strong>
+                        <p>Book a 30-minute consultation to explore how InvoChain can help your business.</p>
+                        <button class="btn btn-secondary" id="liveChatBtn" style="margin-top:12px; font-size:0.9rem;">Schedule Now</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -261,6 +287,15 @@
             <p>&copy; 2025 InvoChain. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Live Chat Widget -->
+    <button class="live-chat-widget" id="liveChatWidget" aria-label="Open live chat support">
+        <svg class="chat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="chat-text">Live Support</span>
+        <span class="chat-badge">24/7</span>
+    </button>
 
     <script src="script.js"></script>
 </body>

@@ -60,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
                             color: Colors.green.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Verified',
                             style: TextStyle(
                               color: Colors.green,
