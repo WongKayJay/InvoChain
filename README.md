@@ -20,3 +20,7 @@ Then open the URL shown in the terminal (usually http://localhost:5173).
 Additional scripts:
 - `npm run build` — Build production assets to `dist/`
 - `npm run preview` — Serve the built site locally at http://localhost:4173
+
+Important:
+- Run `npm run dev` in terminal to test website
+- Run `invochain` in terminal to test application
