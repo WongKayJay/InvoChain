@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/stat_card.dart';
 import '../widgets/action_card.dart';
+import '../services/app_data_provider.dart';
+import 'main_navigation.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final appData = context.watch<AppDataProvider>();
     
     return Scaffold(
       appBar: AppBar(
@@ -86,23 +90,45 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            const Row(
+            Row(
               children: [
                 Expanded(
                   child: StatCard(
-                    title: 'Total Funded',
-                    value: '\$125,000',
+                    title: 'Total Invested',
+                    value: '\$${appData.totalInvested.toStringAsFixed(0)}',
                     icon: Icons.attach_money,
                     color: Colors.green,
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Expanded(
                   child: StatCard(
-                    title: 'Active Deals',
-                    value: '8',
-                    icon: Icons.description,
+                    title: 'Active Investments',
+                    value: '${appData.activeInvestments}',
+                    icon: Icons.trending_up,
                     color: Colors.blue,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: StatCard(
+                    title: 'Total Invoices',
+                    value: '${appData.totalInvoices}',
+                    icon: Icons.description,
+                    color: Colors.orange,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: StatCard(
+                    title: 'Avg Return',
+                    value: '${appData.averageReturn.toStringAsFixed(1)}%',
+                    icon: Icons.percent,
+                    color: Colors.purple,
                   ),
                 ),
               ],
@@ -122,7 +148,14 @@ class HomeScreen extends StatelessWidget {
               subtitle: 'Upload and verify your invoices',
               icon: Icons.upload_file,
               color: theme.colorScheme.primary,
-              onTap: () {},
+              onTap: () {
+                // Navigate to Invoices tab (index 1)
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => const MainNavigation(initialIndex: 1),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 12),
             ActionCard(
@@ -130,7 +163,14 @@ class HomeScreen extends StatelessWidget {
               subtitle: 'Explore verified invoice opportunities',
               icon: Icons.search,
               color: theme.colorScheme.secondary,
-              onTap: () {},
+              onTap: () {
+                // Navigate to Invest tab (index 2)
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => const MainNavigation(initialIndex: 2),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 12),
             ActionCard(
@@ -138,7 +178,14 @@ class HomeScreen extends StatelessWidget {
               subtitle: 'View blockchain audit trail',
               icon: Icons.timeline,
               color: Colors.orange,
-              onTap: () {},
+              onTap: () {
+                // Navigate to Portfolio tab (index 3) which shows investments
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => const MainNavigation(initialIndex: 3),
+                  ),
+                );
+              },
             ),
           ],
         ),

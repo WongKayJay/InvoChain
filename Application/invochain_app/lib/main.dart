@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'screens/main_navigation.dart';
+import 'screens/login_screen.dart';
 import 'services/theme_provider.dart';
+import 'services/auth_service_web.dart';
+import 'services/app_data_provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => AppDataProvider()),
+      ],
       child: const InvoChainApp(),
     ),
   );
@@ -26,7 +32,7 @@ class InvoChainApp extends StatelessWidget {
           theme: _buildLightTheme(),
           darkTheme: _buildDarkTheme(),
           themeMode: themeProvider.themeMode,
-          home: const MainNavigation(),
+          home: const AuthChecker(),
         );
       },
     );
@@ -86,6 +92,70 @@ class InvoChainApp extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Color(0xFF0F172A),
         foregroundColor: Color(0xFFE2E8F0),
+      ),
+    );
+  }
+}
+
+// Widget to check authentication state on app start
+class AuthChecker extends StatefulWidget {
+  const AuthChecker({super.key});
+
+  @override
+  State<AuthChecker> createState() => _AuthCheckerState();
+}
+
+class _AuthCheckerState extends State<AuthChecker> {
+  final _authService = AuthServiceWeb();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkAuthState();
+  }
+
+  Future<void> _checkAuthState() async {
+    final isLoggedIn = await _authService.checkLoginState();
+    
+    if (mounted) {
+      // Navigate to appropriate screen
+      if (isLoggedIn) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const MainNavigation()),
+        );
+      } else {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const LoginScreen()),
+        );
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.account_balance_wallet,
+              size: 80,
+              color: Color(0xFF2563EB),
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'InvoChain',
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2563EB),
+              ),
+            ),
+            const SizedBox(height: 32),
+            const CircularProgressIndicator(),
+          ],
+        ),
       ),
     );
   }
