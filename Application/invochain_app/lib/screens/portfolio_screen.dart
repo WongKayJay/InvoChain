@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/stat_card.dart';
+import '../services/app_data_provider.dart';
 
 class PortfolioScreen extends StatelessWidget {
   const PortfolioScreen({super.key});
@@ -7,6 +9,7 @@ class PortfolioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final appData = context.watch<AppDataProvider>();
     
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +45,7 @@ class PortfolioScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      '\$143,250',
+                      '\$${appData.totalPortfolioValue.toStringAsFixed(2)}',
                       style: theme.textTheme.displaySmall?.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -58,7 +61,7 @@ class PortfolioScreen extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          '+12.5% this month',
+                          'Avg Return: ${appData.averageReturn.toStringAsFixed(1)}%',
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: Colors.white.withOpacity(0.9),
                           ),
@@ -79,21 +82,21 @@ class PortfolioScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            const Row(
+            Row(
               children: [
                 Expanded(
                   child: StatCard(
                     title: 'Total Returns',
-                    value: '\$8,250',
+                    value: '\$${appData.totalReturns.toStringAsFixed(2)}',
                     icon: Icons.account_balance_wallet,
                     color: Colors.green,
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Expanded(
                   child: StatCard(
                     title: 'Active',
-                    value: '12',
+                    value: '${appData.activeInvestments}',
                     icon: Icons.autorenew,
                     color: Colors.blue,
                   ),
@@ -110,29 +113,49 @@ class PortfolioScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            _buildInvestmentItem(
-              context,
-              'Tech Solutions Ltd.',
-              '\$15,000',
-              '85% complete',
-              0.85,
-            ),
-            const SizedBox(height: 12),
-            _buildInvestmentItem(
-              context,
-              'Manufacturing Corp.',
-              '\$22,000',
-              '60% complete',
-              0.60,
-            ),
-            const SizedBox(height: 12),
-            _buildInvestmentItem(
-              context,
-              'Retail Group Inc.',
-              '\$10,500',
-              '40% complete',
-              0.40,
-            ),
+            if (appData.userInvestments.isEmpty)
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.trending_up,
+                          size: 48,
+                          color: theme.colorScheme.primary.withOpacity(0.5),
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'No active investments yet',
+                          style: theme.textTheme.titleMedium,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Start investing to see your portfolio',
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.textTheme.bodySmall?.color?.withOpacity(0.7),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            else
+              ...appData.userInvestments.map((investment) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: _buildInvestmentItem(
+                    context,
+                    investment.company,
+                    investment.formattedAmount,
+                    '${investment.daysRemaining} days remaining',
+                    investment.progressPercentage / 100,
+                    investment.formattedExpectedReturn,
+                  ),
+                );
+              }),
           ],
         ),
       ),
@@ -145,6 +168,7 @@ class PortfolioScreen extends StatelessWidget {
     String amount,
     String progress,
     double progressValue,
+    String expectedReturn,
   ) {
     final theme = Theme.of(context);
     
@@ -157,17 +181,39 @@ class PortfolioScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  company,
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    company,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
+                const SizedBox(width: 8),
                 Text(
                   amount,
                   style: theme.textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: theme.colorScheme.primary,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Expected Return',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.textTheme.bodySmall?.color?.withOpacity(0.7),
+                  ),
+                ),
+                Text(
+                  expectedReturn,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
