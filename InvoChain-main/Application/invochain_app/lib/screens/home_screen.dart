@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../widgets/stat_card.dart';
 import '../widgets/action_card.dart';
 import '../services/app_data_provider.dart';
+import 'main_navigation.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -147,7 +148,14 @@ class HomeScreen extends StatelessWidget {
               subtitle: 'Upload and verify your invoices',
               icon: Icons.upload_file,
               color: theme.colorScheme.primary,
-              onTap: () {},
+              onTap: () {
+                // Navigate to Invoices tab (index 1)
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => const MainNavigation(initialIndex: 1),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 12),
             ActionCard(
@@ -155,7 +163,14 @@ class HomeScreen extends StatelessWidget {
               subtitle: 'Explore verified invoice opportunities',
               icon: Icons.search,
               color: theme.colorScheme.secondary,
-              onTap: () {},
+              onTap: () {
+                // Navigate to Invest tab (index 2)
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => const MainNavigation(initialIndex: 2),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 12),
             ActionCard(
@@ -163,7 +178,14 @@ class HomeScreen extends StatelessWidget {
               subtitle: 'View blockchain audit trail',
               icon: Icons.timeline,
               color: Colors.orange,
-              onTap: () {},
+              onTap: () {
+                // Navigate to Portfolio tab (index 3) which shows investments
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => const MainNavigation(initialIndex: 3),
+                  ),
+                );
+              },
             ),
           ],
         ),
