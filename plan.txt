@@ -1,0 +1,441 @@
+# InvoChain System Design and Logic Overview
+
+## Project Overview
+InvoChain is a blockchain-verified invoice financing platform that connects SMEs needing liquidity with investors seeking returns. The platform enables transparent, secure invoice financing with escrow-backed security and real-time on-chain visibility.
+
+## System Architecture
+
+### High-Level Architecture
+┌─────────────────────────────────────────────────────────────┐
+│                         Frontend Layer                       │
+├─────────────────────────────────────────────────────────────┤
+│  Marketing Website (HTML/CSS/JS)  │  Flutter Web App        │
+│  - Landing page                    │  - Investment dashboard │
+│  - Features showcase               │  - Portfolio tracking   │
+│  - Download pages                  │  - Invoice management   │
+│  - Contact forms                   │  - User authentication  │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                     Client-Side Layer                        │
+├─────────────────────────────────────────────────────────────┤
+│  State Management (Provider)   │  Local Storage             │
+│  - AppDataProvider             │  - SharedPreferences       │
+│  - Investment state            │  - User authentication     │
+│  - Portfolio calculations      │  - Session persistence     │
+│  - Invoice tracking            │  - Mock blockchain data    │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      Deployment Layer                        │
+├─────────────────────────────────────────────────────────────┤
+│  Nginx Web Server              │  SSL/TLS (Let's Encrypt)   │
+│  - Static file serving         │  - HTTPS encryption        │
+│  - Reverse proxy routing       │  - Certificate management  │
+│  - Caching & compression       │  - Security headers        │
+└─────────────────────────────────────────────────────────────┘
+
+## Component Breakdown
+
+### 1. Frontend - Marketing Website
+**Technology:** HTML5, CSS3, JavaScript (Vanilla)
+**Build Tool:** Vite
+**Purpose:** Attract users and provide information
+
+**Features:**
+- Responsive landing page with hero section
+- Feature showcase with animations
+- Pricing and performance metrics
+- Download pages for iOS/Android/Windows/Mac
+- Contact form
+- Dark mode toggle
+- Smooth scrolling navigation
+
+**File Structure:**
+frontend/Website/
+├── index.html          # Main landing page
+├── styles.css          # Styling
+├── script.js           # Interactive features
+├── downloads/          # Platform-specific installer pages
+│   ├── InvoChain-Mobile-Installer.html
+│   └── InvoChain-Desktop-Installer.html
+└── package.json        # Vite configuration
+
+### 2. Frontend - Flutter Application
+**Technology:** Flutter 3.35.6, Dart
+**State Management:** Provider pattern
+**Purpose:** Main application interface
+
+**Features:**
+- User authentication (signup/login/logout)
+- Investment opportunities browser
+- Portfolio tracking with real-time calculations
+- Invoice management system
+- Blockchain transaction simulation
+- Dark/Light theme support
+- Cross-platform (Web, Android, iOS, Windows, macOS)
+
+**File Structure:**
+frontend/Application/invochain_app/
+├── lib/
+│   ├── main.dart                 # App entry point
+│   ├── models/                   # Data models
+│   │   ├── user.dart
+│   │   ├── investment.dart
+│   │   └── invoice.dart
+│   ├── screens/                  # UI screens
+│   │   ├── login_screen.dart
+│   │   ├── signup_screen.dart
+│   │   ├── home_screen.dart
+│   │   ├── invest_screen.dart
+│   │   ├── portfolio_screen.dart
+│   │   ├── invoices_screen.dart
+│   │   └── profile_screen.dart
+│   ├── services/                 # Business logic
+│   │   ├── auth_service_web.dart
+│   │   ├── app_data_provider.dart
+│   │   └── theme_provider.dart
+│   └── widgets/                  # Reusable components
+│       ├── stat_card.dart
+│       └── action_card.dart
+├── pubspec.yaml                  # Dependencies
+└── web/                          # Web-specific files
+
+### 3. Backend (Current: Client-Side Only)
+**Current Implementation:** Local storage with mock data
+**Future Implementation:** API-based backend (planned)
+
+**Current Data Flow:**
+1. User signup → Store in SharedPreferences (browser localStorage)
+2. User login → Validate against SharedPreferences
+3. Investment data → Managed by AppDataProvider (in-memory state)
+4. Portfolio calculations → Computed properties in AppDataProvider
+5. Blockchain hashes → Generated locally (mock implementation)
+
+**Planned Backend Services:**
+- RESTful API server (Node.js/Express or Dart/Shelf)
+- Database (PostgreSQL or MongoDB)
+- Real blockchain integration (Ethereum/Polygon)
+- Smart contracts for escrow
+- Payment gateway integration
+- KYC/KYB verification services
+- Email notification service
+
+### 4. Deployment Infrastructure
+**Technology:** Nginx, Certbot, Linux (Ubuntu/Debian)
+**Purpose:** Host and serve the application
+
+**Configuration:**
+- Static file serving for marketing website
+- Flutter web app hosting at /app route
+- HTTP to HTTPS redirection
+- SSL/TLS encryption
+- Security headers (HSTS, CSP, X-Frame-Options)
+- Asset caching and optimization
+- Gzip compression
+
+**File Structure:**
+deployment/
+├── nginx.conf              # Nginx configuration
+├── deploy.sh               # Linux deployment script
+├── deploy.bat              # Windows deployment script
+├── server-setup.sh         # Server initialization
+├── backup.sh               # Backup automation
+├── QUICKSTART.md           # Fast deployment guide
+├── HOSTINGER.md            # DNS configuration guide
+└── README.md               # Deployment overview
+
+## Data Models
+
+### User Model
+```dart
+class User {
+  int id;
+  String email;
+  String passwordHash;  // SHA-256
+  String fullName;
+  DateTime createdAt;
+  DateTime? lastLogin;
+}
+```
+
+### Investment Opportunity Model
+```dart
+class InvestmentOpportunity {
+  String id;
+  String company;
+  String industry;
+  String grade;          // A, B, C
+  double amount;
+  double returnRate;
+  int tenorDays;
+  String description;
+  double fundedPercentage;
+  int investors;
+  String blockchainHash;
+  DateTime listedDate;
+  bool isShariahCompliant;
+  List<String> documents;
+}
+```
+
+### User Investment Model
+```dart
+class UserInvestment {
+  String id;
+  String opportunityId;
+  String company;
+  double investedAmount;
+  double returnRate;
+  DateTime investedDate;
+  DateTime maturityDate;
+  String status;         // active, matured, pending
+  String blockchainHash;
+  List<BlockchainEvent> chainEvents;
+}
+```
+
+### Invoice Model
+```dart
+class Invoice {
+  String id;
+  String company;
+  double amount;
+  InvoiceStatus status;  // pending, funded, completed, rejected
+  DateTime createdDate;
+  DateTime? fundedDate;
+  String? blockchainHash;
+  int tenorDays;
+  double returnRate;
+  String? investmentId;
+}
+```
+
+## Business Logic
+
+### Authentication Flow
+1. **Sign Up:**
+   - User enters email, password, full name
+   - Validate email format
+   - Validate password strength (min 6 characters)
+   - Hash password using SHA-256
+   - Store user data in SharedPreferences
+   - Auto-login after successful signup
+
+2. **Login:**
+   - User enters email and password
+   - Retrieve user data from SharedPreferences
+   - Hash entered password
+   - Compare with stored hash
+   - Set current user session
+   - Update last login timestamp
+
+3. **Session Persistence:**
+   - On app launch, check for saved session
+   - Auto-login if valid session exists
+   - Logout clears session data
+
+### Investment Flow
+1. **Browse Opportunities:**
+   - Display list of available investment opportunities
+   - Filter by industry, grade, compliance type
+   - Show funding progress and investor count
+
+2. **Make Investment:**
+   - User selects opportunity and amount
+   - Calculate expected returns
+   - Generate blockchain transaction hash (mock)
+   - Update opportunity funding percentage
+   - Add to user's investment portfolio
+   - Create blockchain event trail
+
+3. **Portfolio Tracking:**
+   - Calculate total portfolio value
+   - Compute total invested amount
+   - Calculate total expected returns
+   - Calculate average ROI
+   - Track active vs matured investments
+
+### Invoice Management Flow
+1. **Create Invoice:**
+   - User enters company, amount, tenor, return rate
+   - Generate unique invoice ID (INV-YYYY-XXX)
+   - Set initial status to "pending"
+   - Add to invoices list
+
+2. **Update Invoice Status:**
+   - Change status (pending → funded → completed)
+   - Generate blockchain hash on funding
+   - Link to investment if funded through platform
+   - Update invoice statistics
+
+### State Management Architecture
+**Pattern:** Provider (ChangeNotifier)
+
+**AppDataProvider manages:**
+- All investment opportunities (mock data)
+- User's investments
+- User's invoices
+- Computed properties (portfolio stats)
+- State updates trigger UI refresh via notifyListeners()
+
+**Data Flow:**
+User Action → Method Call → State Update → notifyListeners() → UI Rebuild
+
+## Security Considerations
+
+### Current Implementation
+- Password hashing with SHA-256
+- Client-side validation
+- Session management via SharedPreferences
+- No external API exposure (client-side only)
+
+### Production Requirements (Future)
+- HTTPS/TLS encryption
+- JWT token authentication
+- API rate limiting
+- Input sanitization
+- CSRF protection
+- XSS prevention
+- SQL injection prevention (when DB is added)
+- Two-factor authentication
+- Secure key management
+- Audit logging
+
+## Performance Optimization
+
+### Frontend
+- Tree-shaking for fonts (99.4% reduction)
+- Static asset caching (30 days)
+- Gzip compression for JS files
+- Lazy loading for images
+- Code splitting
+- Minification and bundling
+
+### Backend (Planned)
+- Database indexing
+- Query optimization
+- Caching layer (Redis)
+- CDN for static assets
+- Load balancing
+- Horizontal scaling
+
+## Technology Stack Summary
+
+**Frontend:**
+- Flutter 3.35.6 (Dart)
+- HTML5, CSS3, JavaScript
+- Vite (build tool)
+- Provider (state management)
+
+**Storage:**
+- SharedPreferences (browser localStorage)
+- In-memory state (AppDataProvider)
+
+**Deployment:**
+- Nginx web server
+- Let's Encrypt SSL
+- Ubuntu/Debian Linux
+- Git version control
+
+**Future Backend:**
+- Node.js/Express or Dart/Shelf (API server)
+- PostgreSQL or MongoDB (database)
+- Ethereum/Polygon (blockchain)
+- Solidity (smart contracts)
+
+## Development Workflow
+
+1. **Local Development:**
+   - Flutter: `flutter run -d chrome`
+   - Website: `npm run dev`
+   - Hot reload for instant updates
+
+2. **Build for Production:**
+   - Flutter: `flutter build web --release`
+   - Website: `npm run build`
+
+3. **Deployment:**
+   - Build production assets
+   - Upload to server (/var/www/invochain/)
+   - Configure Nginx
+   - Setup SSL certificate
+   - Test all endpoints
+
+4. **Version Control:**
+   - Git for source control
+   - GitHub repository: WongKayJay/InvoChain
+   - Feature branches for development
+   - Main branch for production
+
+## Future Enhancements
+
+### Phase 1: Backend API
+- RESTful API server
+- Database integration
+- Real authentication system
+- User management
+
+### Phase 2: Blockchain Integration
+- Smart contract development
+- Ethereum/Polygon integration
+- Real blockchain transactions
+- Escrow automation
+
+### Phase 3: Advanced Features
+- KYC/KYB verification
+- Payment gateway integration
+- Email notifications
+- Analytics dashboard
+- Admin panel
+
+### Phase 4: Mobile Apps
+- iOS App Store release
+- Google Play Store release
+- Push notifications
+- Biometric authentication
+
+### Phase 5: Scaling
+- Microservices architecture
+- Load balancing
+- CDN integration
+- Multi-region deployment
+- Performance monitoring
+
+## Testing Strategy
+
+### Current Testing
+- Manual testing of UI flows
+- Flutter analyze for code quality
+- Browser DevTools for debugging
+
+### Planned Testing
+- Unit tests for business logic
+- Widget tests for UI components
+- Integration tests for user flows
+- End-to-end tests
+- Performance testing
+- Security testing
+- Load testing
+
+## Monitoring and Maintenance
+
+### Current
+- Nginx access/error logs
+- Git version history
+- Manual error tracking
+
+### Planned
+- Application performance monitoring (APM)
+- Error tracking (Sentry)
+- User analytics
+- Uptime monitoring
+- Automated backups
+- Database monitoring
+- Security scanning
+
+## Conclusion
+
+InvoChain is currently a client-side MVP with a solid frontend architecture and deployment infrastructure. The modular design allows for easy expansion into a full-stack application with real blockchain integration and backend services. The current implementation demonstrates the core concept and user experience while keeping complexity low for initial development and testing.

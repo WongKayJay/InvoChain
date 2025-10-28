@@ -1,0 +1,101 @@
+# InvoChain Dependencies
+
+## Frontend Dependencies
+
+### Flutter Application (frontend/Application/)
+# Flutter SDK: 3.35.6 or higher
+# Dart SDK: Included with Flutter
+
+## Flutter Packages (from pubspec.yaml)
+flutter:
+  sdk: flutter
+cupertino_icons: ^1.0.8
+provider: ^6.0.5
+intl: ^0.18.1
+crypto: ^3.0.3
+shared_preferences: ^2.2.2
+path_provider: ^2.1.1
+
+## Development Dependencies
+flutter_test:
+  sdk: flutter
+flutter_lints: ^3.0.1
+
+### Marketing Website (frontend/Website/)
+# Node.js: v20.x or higher
+# Package Manager: npm or yarn
+
+## NPM Packages (from package.json)
+vite: ^7.1.12
+
+## Backend Dependencies
+
+### Server Infrastructure
+# Operating System: Ubuntu 20.04+ or Debian 11+
+# Web Server: Nginx (latest stable)
+# SSL/TLS: Certbot with Let's Encrypt
+# Version Control: Git
+
+### Optional Backend Services (Not yet implemented)
+# Future backend can be implemented with:
+# - Node.js + Express
+# - Python + Flask/FastAPI
+# - Dart + Shelf
+# Note: Currently using client-side state management with SharedPreferences
+
+## Build Tools
+
+### Flutter Build Tools
+# flutter build web --release
+# flutter build apk --release
+# flutter build ios --release (requires macOS)
+# flutter build windows --release
+# flutter build macos --release (requires macOS)
+
+### Web Build Tools
+# Vite for development and production builds
+# npm run dev (development server)
+# npm run build (production build)
+# npm run preview (preview production build)
+
+## System Requirements
+
+### Development Environment
+- Operating System: Windows 10/11, macOS 11+, or Linux
+- RAM: 8GB minimum (16GB recommended)
+- Storage: 10GB free space
+- Internet: Required for package installation
+
+### Production Server
+- OS: Ubuntu 20.04+ / Debian 11+
+- RAM: 2GB minimum (4GB+ recommended)
+- Storage: 10GB+ available
+- Firewall: UFW configured for HTTP/HTTPS
+
+## Installation Commands
+
+### Flutter Setup
+# Install Flutter SDK from https://flutter.dev
+flutter doctor
+flutter pub get
+flutter build web --release
+
+### Website Setup
+cd frontend/Website
+npm install
+npm run dev
+
+### Server Setup (Production)
+sudo apt update && sudo apt upgrade -y
+sudo apt install nginx git certbot python3-certbot-nginx -y
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
+
+## Notes
+- No external database required (using local storage)
+- Authentication uses SHA-256 hashing with SharedPreferences
+- State management via Provider pattern
+- All dependencies are specified in respective configuration files:
+  * Flutter: pubspec.yaml
+  * Website: package.json
+  * Server: deployment scripts
