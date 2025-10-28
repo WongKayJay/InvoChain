@@ -38,7 +38,7 @@ curl -fsSL https://raw.githubusercontent.com/WongKayJay/InvoChain/main/deploymen
 
 **Windows:**
 ```powershell
-cd c:\Users\there\Downloads\InvoChain\InvoChain-main
+cd c:\Users\there\Downloads\InvoChain
 .\deployment\deploy.bat all
 ```
 

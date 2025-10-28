@@ -46,7 +46,7 @@ sudo mkdir -p /var/www/invochain/{website,app}
 
 ```powershell
 # On your Windows machine
-cd c:\Users\there\Downloads\InvoChain\InvoChain-main\Application\invochain_app
+cd c:\Users\there\Downloads\InvoChain\Application\invochain_app
 
 # Build for production
 flutter clean
@@ -58,7 +58,7 @@ flutter build web --release --web-renderer html
 
 ```powershell
 # Using provided deployment script
-cd c:\Users\there\Downloads\InvoChain\InvoChain-main
+cd c:\Users\there\Downloads\InvoChain
 .\deployment\deploy.bat all
 
 # Or manual deployment:
