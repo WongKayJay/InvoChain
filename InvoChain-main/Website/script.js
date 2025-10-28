@@ -364,3 +364,26 @@ function applyParallax(section, scrollY) {
         el.style.transform = `translate3d(0, ${elTranslate.toFixed(2)}px, 0)`;
     });
 }
+
+// ========== Download Handlers ==========
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile download button handler
+    const mobileDownloadBtn = document.querySelector('.btn-download-mobile');
+    if (mobileDownloadBtn) {
+        mobileDownloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Open the mobile installer page in a new tab
+            window.open('downloads/InvoChain-Mobile-Installer.html', '_blank');
+        });
+    }
+    
+    // Desktop download button handler
+    const desktopDownloadBtn = document.querySelector('.btn-download-desktop');
+    if (desktopDownloadBtn) {
+        desktopDownloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Open the desktop installer page in a new tab
+            window.open('downloads/InvoChain-Desktop-Installer.html', '_blank');
+        });
+    }
+});

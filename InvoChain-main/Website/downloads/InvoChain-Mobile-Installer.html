@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvoChain Mobile App - Installation Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .version {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        
+        .platform-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .platform-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .platform-icon {
+            font-size: 24px;
+        }
+        
+        .steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .steps li {
+            counter-increment: step-counter;
+            padding: 12px 0;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 8px;
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 20px 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .note strong {
+            color: #856404;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #888;
+            font-size: 13px;
+        }
+        
+        code {
+            background: #f1f3f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">📱</div>
+        <h1>InvoChain Mobile App</h1>
+        <p class="version">Version 1.0.0 (Beta) • iOS & Android</p>
+        
+        <!-- iOS Section -->
+        <div class="platform-section">
+            <h2><span class="platform-icon">🍎</span>iOS Installation</h2>
+            <ol class="steps">
+                <li>Open this page on your iPhone or iPad</li>
+                <li>Tap the download button below to get the <code>.ipa</code> file</li>
+                <li>Install <strong>AltStore</strong> or <strong>TestFlight</strong> (for beta testing)</li>
+                <li>Use AltStore to sideload the app, or wait for TestFlight invitation</li>
+                <li>Trust the developer certificate in <code>Settings → General → VPN & Device Management</code></li>
+            </ol>
+            <a href="#" class="download-btn" onclick="downloadiOS(); return false;">📥 Download for iOS (.ipa)</a>
+        </div>
+        
+        <!-- Android Section -->
+        <div class="platform-section">
+            <h2><span class="platform-icon">🤖</span>Android Installation</h2>
+            <ol class="steps">
+                <li>Tap the download button below to get the <code>.apk</code> file</li>
+                <li>Open <code>Settings → Security → Unknown Sources</code> and enable installation from unknown sources</li>
+                <li>Open your Downloads folder and tap the <code>InvoChain.apk</code> file</li>
+                <li>Follow the on-screen prompts to install</li>
+                <li>Launch InvoChain from your app drawer</li>
+            </ol>
+            <a href="#" class="download-btn" onclick="downloadAndroid(); return false;">📥 Download for Android (.apk)</a>
+        </div>
+        
+        <div class="note">
+            <strong>⚠️ Note:</strong> This is a <strong>demo/mock installer</strong> for testing purposes. 
+            The actual mobile app is built using Flutter and would be distributed via official app stores 
+            (Apple App Store & Google Play Store) in production. For real deployment, you would need to:
+            <ul style="margin-top: 8px; padding-left: 20px;">
+                <li>Build release versions with <code>flutter build ios</code> and <code>flutter build apk</code></li>
+                <li>Sign the apps with proper certificates</li>
+                <li>Submit to App Store Connect and Google Play Console</li>
+                <li>Complete app review processes</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            © 2025 InvoChain • <a href="../index.html" style="color: #667eea; text-decoration: none;">Back to Website</a>
+        </div>
+    </div>
+    
+    <script>
+        function downloadAndroid() {
+            // Create a mock APK info file
+            const content = `InvoChain Android Application Package
+=====================================
+
+Version: 1.0.0 (Beta)
+Package Name: com.invochain.app
+Minimum SDK: Android 7.0 (API 24)
+Target SDK: Android 14 (API 34)
+
+INSTALLATION INSTRUCTIONS:
+--------------------------
+This is a MOCK installer file for demonstration purposes.
+
+To build the actual Android APK from your Flutter project:
+
+1. Navigate to your Flutter project directory:
+   cd Application/invochain_app
+
+2. Build the APK:
+   flutter build apk --release
+
+3. The APK will be generated at:
+   build/app/outputs/flutter-apk/app-release.apk
+
+4. For a split APK by ABI (smaller file size):
+   flutter build apk --split-per-abi
+
+FEATURES:
+---------
+✓ Invoice Financing Platform
+✓ Blockchain-Verified Transactions
+✓ Real-Time Portfolio Tracking
+✓ Secure Authentication
+✓ Investment Opportunities
+✓ On-Chain Audit Trail
+
+SUPPORT:
+--------
+Website: https://github.com/WongKayJay/InvoChain
+Email: support@invochain.com
+Live Chat: Available 24/7 on our website
+
+© 2025 InvoChain - Transparent, Secure Invoice Financing
+`;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'InvoChain-Android-v1.0.0-MOCK.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            alert('📥 Mock Android installer downloaded!\n\nThis is a demo file with build instructions.\nFollow the steps in the downloaded file to build the real APK from your Flutter project.');
+        }
+        
+        function downloadiOS() {
+            // Create a mock IPA info file
+            const content = `InvoChain iOS Application
+=========================
+
+Version: 1.0.0 (Beta)
+Bundle ID: com.invochain.app
+Minimum iOS: 12.0
+Target iOS: 17.0
+
+INSTALLATION INSTRUCTIONS:
+--------------------------
+This is a MOCK installer file for demonstration purposes.
+
+To build the actual iOS IPA from your Flutter project:
+
+1. Navigate to your Flutter project directory:
+   cd Application/invochain_app
+
+2. Build for iOS:
+   flutter build ios --release
+
+3. Open the project in Xcode:
+   open ios/Runner.xcworkspace
+
+4. In Xcode:
+   - Select "Any iOS Device" as the build target
+   - Product → Archive
+   - Distribute App → Ad Hoc or App Store
+
+5. For TestFlight distribution:
+   - Upload to App Store Connect
+   - Invite beta testers
+   - Distribute via TestFlight
+
+ALTERNATIVE - Sideloading with AltStore:
+----------------------------------------
+1. Install AltStore on your computer and iOS device
+2. Connect your device via USB
+3. Use AltStore to sideload the .ipa file
+4. The app will be valid for 7 days (free Apple ID) or 1 year (paid developer account)
+
+FEATURES:
+---------
+✓ Invoice Financing Platform
+✓ Blockchain-Verified Transactions
+✓ Real-Time Portfolio Tracking
+✓ Secure Authentication (Face ID/Touch ID)
+✓ Investment Opportunities
+✓ On-Chain Audit Trail
+✓ Dark Mode Support
+
+REQUIREMENTS:
+-------------
+- iOS 12.0 or later
+- iPhone, iPad, or iPod touch
+- Internet connection for real-time updates
+
+SUPPORT:
+--------
+Website: https://github.com/WongKayJay/InvoChain
+Email: support@invochain.com
+Live Chat: Available 24/7 on our website
+
+© 2025 InvoChain - Transparent, Secure Invoice Financing
+`;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'InvoChain-iOS-v1.0.0-MOCK.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            alert('📥 Mock iOS installer downloaded!\n\nThis is a demo file with build instructions.\nFollow the steps in the downloaded file to build the real IPA from your Flutter project.');
+        }
+    </script>
+</body>
+</html>

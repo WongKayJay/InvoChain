@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvoChain Desktop App - Installation Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .version {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        
+        .platform-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .platform-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .platform-icon {
+            font-size: 24px;
+        }
+        
+        .steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .steps li {
+            counter-increment: step-counter;
+            padding: 12px 0;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 8px;
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 20px 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .note strong {
+            color: #856404;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #888;
+            font-size: 13px;
+        }
+        
+        code {
+            background: #f1f3f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .system-requirements {
+            background: #e8f4f8;
+            border-left: 4px solid #0dcaf0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">💻</div>
+        <h1>InvoChain Desktop App</h1>
+        <p class="version">Version 1.0.0 (Beta) • Windows & macOS</p>
+        
+        <!-- Windows Section -->
+        <div class="platform-section">
+            <h2><span class="platform-icon">🪟</span>Windows Installation</h2>
+            <div class="system-requirements">
+                <strong>System Requirements:</strong> Windows 10/11 (64-bit), 4GB RAM, 500MB disk space
+            </div>
+            <ol class="steps">
+                <li>Click the download button below to get the installer</li>
+                <li>Run <code>InvoChain-Setup.exe</code> from your Downloads folder</li>
+                <li>Follow the installation wizard</li>
+                <li>Choose installation directory (default: <code>C:\Program Files\InvoChain</code>)</li>
+                <li>Launch InvoChain from your Start Menu or Desktop shortcut</li>
+            </ol>
+            <a href="#" class="download-btn" onclick="downloadWindows(); return false;">📥 Download for Windows (.exe)</a>
+        </div>
+        
+        <!-- macOS Section -->
+        <div class="platform-section">
+            <h2><span class="platform-icon">🍎</span>macOS Installation</h2>
+            <div class="system-requirements">
+                <strong>System Requirements:</strong> macOS 11 Big Sur or later, 4GB RAM, 500MB disk space
+            </div>
+            <ol class="steps">
+                <li>Click the download button below to get the <code>.dmg</code> file</li>
+                <li>Open the downloaded <code>InvoChain.dmg</code></li>
+                <li>Drag the InvoChain icon to your Applications folder</li>
+                <li>Right-click InvoChain in Applications and select "Open" (first time only)</li>
+                <li>Click "Open" in the security dialog to allow the app to run</li>
+            </ol>
+            <a href="#" class="download-btn" onclick="downloadMac(); return false;">📥 Download for Mac (.dmg)</a>
+        </div>
+        
+        <div class="note">
+            <strong>⚠️ Note:</strong> This is a <strong>demo/mock installer</strong> for testing purposes. 
+            The actual desktop app is built using Flutter and would be properly signed and distributed in production. 
+            For real deployment, you would need to:
+            <ul style="margin-top: 8px; padding-left: 20px;">
+                <li>Build release versions with <code>flutter build windows</code> and <code>flutter build macos</code></li>
+                <li>Sign the executables with code signing certificates</li>
+                <li>Create proper installers with tools like Inno Setup (Windows) or create-dmg (macOS)</li>
+                <li>Notarize macOS apps with Apple Developer account</li>
+                <li>Distribute via official channels or your own CDN</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            © 2025 InvoChain • <a href="../index.html" style="color: #667eea; text-decoration: none;">Back to Website</a>
+        </div>
+    </div>
+    
+    <script>
+        function downloadWindows() {
+            const content = `InvoChain Desktop Application - Windows
+========================================
+
+Version: 1.0.0 (Beta)
+Platform: Windows 10/11 (64-bit)
+Architecture: x64
+
+INSTALLATION INSTRUCTIONS:
+--------------------------
+This is a MOCK installer file for demonstration purposes.
+
+To build the actual Windows application from your Flutter project:
+
+1. Ensure you have Flutter Windows desktop support:
+   flutter config --enable-windows-desktop
+
+2. Navigate to your Flutter project directory:
+   cd Application/invochain_app
+
+3. Build the Windows executable:
+   flutter build windows --release
+
+4. The executable will be at:
+   build/windows/runner/Release/invochain_app.exe
+
+5. To create a proper installer:
+   - Use Inno Setup (https://jrsoftware.org/isinfo.php)
+   - Or use MSIX packaging for Microsoft Store distribution
+   - Include all DLL dependencies from the Release folder
+
+SYSTEM REQUIREMENTS:
+--------------------
+- Operating System: Windows 10 (1809 or later) or Windows 11
+- Processor: x64 architecture
+- RAM: 4GB minimum, 8GB recommended
+- Disk Space: 500MB for installation
+- Internet: Required for real-time blockchain verification
+
+FEATURES:
+---------
+✓ Invoice Financing Platform
+✓ Blockchain-Verified Transactions
+✓ Real-Time Portfolio Tracking
+✓ Secure Authentication
+✓ Investment Opportunities Dashboard
+✓ On-Chain Audit Trail
+✓ Dark Mode Support
+✓ Multi-language Support
+✓ Offline Data Caching
+
+WHAT'S NEW IN v1.0.0:
+---------------------
+• Initial release
+• Complete invoice management system
+• Real-time investment tracking
+• Blockchain integration
+• Modern Material Design 3 UI
+• Provider state management
+
+TROUBLESHOOTING:
+----------------
+- If the app doesn't start, install Visual C++ Redistributable
+- For firewall issues, allow InvoChain in Windows Defender
+- Run as Administrator if you encounter permission errors
+
+UNINSTALL:
+----------
+- Via Settings → Apps → InvoChain → Uninstall
+- Or run the uninstaller from the installation directory
+
+SUPPORT:
+--------
+Website: https://github.com/WongKayJay/InvoChain
+Email: support@invochain.com
+Live Chat: Available 24/7 on our website
+Documentation: Check the README.md in the project
+
+© 2025 InvoChain - Transparent, Secure Invoice Financing
+`;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'InvoChain-Windows-v1.0.0-MOCK.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            alert('📥 Mock Windows installer downloaded!\n\nThis is a demo file with build instructions.\nFollow the steps in the downloaded file to build the real Windows executable from your Flutter project.');
+        }
+        
+        function downloadMac() {
+            const content = `InvoChain Desktop Application - macOS
+======================================
+
+Version: 1.0.0 (Beta)
+Platform: macOS 11 Big Sur or later
+Architecture: Universal (Intel & Apple Silicon)
+
+INSTALLATION INSTRUCTIONS:
+--------------------------
+This is a MOCK installer file for demonstration purposes.
+
+To build the actual macOS application from your Flutter project:
+
+1. Ensure you have Flutter macOS desktop support:
+   flutter config --enable-macos-desktop
+
+2. Navigate to your Flutter project directory:
+   cd Application/invochain_app
+
+3. Build the macOS app:
+   flutter build macos --release
+
+4. The app bundle will be at:
+   build/macos/Build/Products/Release/invochain_app.app
+
+5. To create a proper .dmg installer:
+   
+   # Install create-dmg tool
+   brew install create-dmg
+   
+   # Create DMG
+   create-dmg \\
+     --volname "InvoChain" \\
+     --window-pos 200 120 \\
+     --window-size 600 400 \\
+     --icon-size 100 \\
+     --icon "InvoChain.app" 175 120 \\
+     --hide-extension "InvoChain.app" \\
+     --app-drop-link 425 120 \\
+     "InvoChain.dmg" \\
+     "build/macos/Build/Products/Release/"
+
+6. For App Store distribution:
+   - Enroll in Apple Developer Program
+   - Configure app signing in Xcode
+   - Archive and upload via Xcode
+   - Submit for review in App Store Connect
+
+7. For notarization (required for macOS Catalina+):
+   xcrun notarytool submit InvoChain.dmg \\
+     --apple-id your@email.com \\
+     --team-id YOURTEAMID \\
+     --password @keychain:AC_PASSWORD
+
+SYSTEM REQUIREMENTS:
+--------------------
+- Operating System: macOS 11 Big Sur or later
+- Processor: Intel Core i5 or Apple M1/M2
+- RAM: 4GB minimum, 8GB recommended
+- Disk Space: 500MB for installation
+- Internet: Required for real-time blockchain verification
+
+FEATURES:
+---------
+✓ Native macOS experience
+✓ Invoice Financing Platform
+✓ Blockchain-Verified Transactions
+✓ Real-Time Portfolio Tracking
+✓ Secure Authentication (Touch ID support)
+✓ Investment Opportunities Dashboard
+✓ On-Chain Audit Trail
+✓ Dark Mode Support (follows system preference)
+✓ Multi-language Support
+✓ Offline Data Caching
+✓ Optimized for Apple Silicon
+
+WHAT'S NEW IN v1.0.0:
+---------------------
+• Initial release
+• Complete invoice management system
+• Real-time investment tracking
+• Blockchain integration
+• Modern Material Design 3 UI
+• Provider state management
+• Native macOS window controls
+
+INSTALLATION NOTES:
+-------------------
+- First launch: Right-click → Open (bypasses Gatekeeper)
+- The app is not signed by Apple Developer (demo version)
+- In production, apps must be signed and notarized
+
+UNINSTALL:
+----------
+- Drag InvoChain from Applications to Trash
+- Remove app data: ~/Library/Application Support/InvoChain
+- Remove preferences: ~/Library/Preferences/com.invochain.app.plist
+
+TROUBLESHOOTING:
+----------------
+- "App cannot be opened": Right-click → Open, then click Open again
+- For Gatekeeper issues: System Preferences → Security & Privacy → Allow
+- Clear cache: Delete ~/Library/Caches/InvoChain
+
+SUPPORT:
+--------
+Website: https://github.com/WongKayJay/InvoChain
+Email: support@invochain.com
+Live Chat: Available 24/7 on our website
+Documentation: Check the README.md in the project
+
+PRIVACY:
+--------
+InvoChain does not collect telemetry or personal data without consent.
+All data is stored locally and encrypted. Blockchain transactions are
+pseudonymous. See our Privacy Policy for details.
+
+© 2025 InvoChain - Transparent, Secure Invoice Financing
+`;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'InvoChain-macOS-v1.0.0-MOCK.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            alert('📥 Mock macOS installer downloaded!\n\nThis is a demo file with build instructions.\nFollow the steps in the downloaded file to build the real macOS app from your Flutter project.');
+        }
+    </script>
+</body>
+</html>
