@@ -135,7 +135,7 @@ sudo chmod -R 755 /var/www/invochain
 ### Step 1: Navigate to Flutter Project
 
 ```bash
-cd c:\Users\there\Downloads\InvoChain\InvoChain-main\Application\invochain_app
+cd c:\Users\there\Downloads\InvoChain\Application\invochain_app
 ```
 
 ### Step 2: Build for Production
@@ -194,7 +194,7 @@ cp -r Website/* /var/www/invochain/website/
 ```bash
 # On your local machine (Windows PowerShell)
 # Build first (see previous section)
-cd c:\Users\there\Downloads\InvoChain\InvoChain-main\Application\invochain_app
+cd c:\Users\there\Downloads\InvoChain\Application\invochain_app
 
 # Copy Flutter web build to server
 scp -r build\web\* root@drshaiban.cloud:/var/www/invochain/app/
