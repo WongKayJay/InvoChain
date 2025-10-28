@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-const { testConnection } = require('./database/connection');
+const { testConnection } = require('./database/connection-sqlite');
 const authRoutes = require('./routes/auth');
 const investmentRoutes = require('./routes/investments');
 const invoiceRoutes = require('./routes/invoices');
@@ -34,7 +34,8 @@ app.get('/health', (req, res) => {
   res.json({ 
     status: 'ok', 
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development'
+    environment: process.env.NODE_ENV || 'development',
+    database: 'SQLite'
   });
 });
 
@@ -43,11 +44,16 @@ app.get('/', (req, res) => {
   res.json({
     message: 'InvoChain API Server',
     version: '1.0.0',
+    database: 'SQLite (Development)',
     endpoints: {
       auth: '/api/auth',
       investments: '/api/investments',
       invoices: '/api/invoices',
       health: '/health'
+    },
+    demoAccounts: {
+      investor: { username: 'demo_investor', password: 'demo123' },
+      sme: { username: 'demo_sme', password: 'demo123' }
     }
   });
 });
@@ -69,24 +75,23 @@ app.use((err, req, res, next) => {
 // Start server
 const startServer = async () => {
   try {
-    // Test database connection
-    console.log('🔄 Testing database connection...');
-    const dbConnected = await testConnection();
+    // SQLite database is initialized in connection-sqlite.js
+    console.log('🔄 Initializing SQLite database...');
     
-    if (!dbConnected) {
-      console.error('❌ Failed to connect to database');
-      console.error('Make sure PostgreSQL is running and .env is configured correctly');
-      process.exit(1);
-    }
+    // Give database time to initialize
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     // Start Express server
     app.listen(PORT, () => {
-      console.log('\n' + '='.repeat(50));
+      console.log('\n' + '='.repeat(60));
       console.log('🚀 InvoChain API Server Running');
-      console.log('='.repeat(50));
+      console.log('='.repeat(60));
       console.log(`📍 Server: http://localhost:${PORT}`);
       console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`🗄️  Database: ${process.env.DB_NAME || 'invochain'}`);
+      console.log(`🗄️  Database: SQLite (invochain.db)`);
+      console.log('\n👤 Demo Accounts:');
+      console.log('   Investor: demo_investor / demo123');
+      console.log('   SME:      demo_sme / demo123');
       console.log('\n📚 API Endpoints:');
       console.log('   POST   /api/auth/signup');
       console.log('   POST   /api/auth/login');
@@ -96,7 +101,9 @@ const startServer = async () => {
       console.log('   GET    /api/invoices');
       console.log('   POST   /api/invoices');
       console.log('   GET    /health');
-      console.log('='.repeat(50) + '\n');
+      console.log('   GET    /  (API info)');
+      console.log('='.repeat(60) + '\n');
+      console.log('💡 Try: http://localhost:3000 in your browser\n');
     });
   } catch (err) {
     console.error('Failed to start server:', err);

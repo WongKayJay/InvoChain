@@ -81,16 +81,31 @@ InvoChain is a transparent, secure invoice financing platform that enables SMEs 
 
 ```
 InvoChain/
- frontend/
-    Application/          # Flutter app
-       invochain_app/
-    Website/              # Marketing site
- backend/                  # Future backend services
- deployment/               # Nginx configs & scripts
- requirements.txt          # Dependencies
- plan.txt                  # System design
- README.md                 # This file
- DEPLOYMENT.md             # Deployment guide
+├── frontend/                 # Frontend applications
+│   ├── website/             # Marketing website (Vite + HTML/CSS/JS)
+│   └── mobile-app/          # Flutter cross-platform app
+├── backend/                 # Backend API server
+│   ├── database/           # Database connections & migrations
+│   ├── models/             # Data models (User, Investment, Invoice)
+│   ├── routes/             # API endpoints (auth, investments, invoices)
+│   ├── middleware/         # Authentication middleware
+│   └── server.js           # Express server
+├── docs/                    # All documentation
+│   ├── AUTHENTICATION_TESTING.md
+│   ├── BACKEND_SETUP.md
+│   ├── DEPLOYMENT.md
+│   ├── FEATURE_UPDATES.md
+│   ├── THEME_UPDATES.md
+│   ├── VERIFICATION.md
+│   ├── QUICKSTART.md
+│   ├── HOSTINGER.md
+│   └── nginx.conf
+├── scripts/                 # Deployment & utility scripts
+│   ├── deploy.sh           # Linux deployment
+│   ├── deploy.bat          # Windows deployment
+│   ├── backup.sh           # Backup script
+│   └── server-setup.sh     # Server configuration
+└── README.md               # This file
 ```
 
 ---
@@ -111,12 +126,16 @@ InvoChain/
 git clone https://github.com/WongKayJay/InvoChain.git
 cd InvoChain
 
+# Setup backend
+cd backend
+npm install
+
 # Setup Flutter app
-cd frontend\Application\invochain_app
+cd ..\frontend\mobile-app
 flutter pub get
 
 # Setup website
-cd ..\..\Website
+cd ..\website
 npm install
 ```
 
@@ -124,15 +143,32 @@ npm install
 
 ##  Running Locally
 
-### Flutter Application
+### Quick Start (All-in-One)
 ```powershell
-cd frontend\Application\invochain_app
+# Run the complete Flutter app (builds and serves)
+invochain
+```
+**Access at:** `http://localhost:8080`
+
+### Backend API
+```powershell
+cd backend
+node server.js
+```
+**API at:** `http://localhost:3000`
+**Demo Accounts:** 
+- Username: `demo_investor` Password: `demo123`
+- Username: `demo_sme` Password: `demo123`
+
+### Flutter Application (Manual)
+```powershell
+cd frontend\mobile-app
 flutter run -d chrome
 ```
 
 ### Marketing Website
 ```powershell
-cd frontend\Website
+cd frontend\website
 npm run dev
 ```
 **Access at:** `http://localhost:5173`
@@ -143,42 +179,67 @@ npm run dev
 
 ### Flutter Web
 ```powershell
-cd frontend\Application\invochain_app
+cd frontend\mobile-app
 flutter build web --release
 ```
 
 ### Website
 ```powershell
-cd frontend\Website
+cd frontend\website
 npm run build
+```
+
+### Backend
+```powershell
+cd backend
+# Set production environment variables in .env
+# Then deploy to server
 ```
 
 ---
 
 ##  Deployment
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) or [deployment/QUICKSTART.md](deployment/QUICKSTART.md) for complete deployment instructions to g1t2.drshaiban.cloud.
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) or [docs/QUICKSTART.md](docs/QUICKSTART.md) for complete deployment instructions.
+
+**Available Scripts:**
+- `scripts/deploy.sh` - Linux/Mac deployment
+- `scripts/deploy.bat` - Windows deployment
+- `scripts/backup.sh` - Backup database and files
+- `scripts/server-setup.sh` - Initial server configuration
 
 ---
 
 ##  Testing
 
+### Backend API
 ```powershell
-# Code analysis
-flutter analyze
+cd backend
+npm test  # If tests are configured
+```
 
-# Run tests
-flutter test
+### Flutter App
+```powershell
+cd frontend\mobile-app
+flutter analyze  # Code analysis
+flutter test     # Run tests
 ```
 
 ---
 
 ##  Documentation
 
-- [plan.txt](plan.txt) - System architecture
-- [requirements.txt](requirements.txt) - Dependencies
-- [DEPLOYMENT.md](DEPLOYMENT.md) - Deployment guide
-- [VERIFICATION.md](VERIFICATION.md) - System verification
+All documentation is located in the `docs/` folder:
+
+- **[docs/AUTHENTICATION_TESTING.md](docs/AUTHENTICATION_TESTING.md)** - Authentication testing guide
+- **[docs/BACKEND_SETUP.md](docs/BACKEND_SETUP.md)** - Backend setup instructions
+- **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** - Complete deployment guide
+- **[docs/FEATURE_UPDATES.md](docs/FEATURE_UPDATES.md)** - Feature updates and changelog
+- **[docs/THEME_UPDATES.md](docs/THEME_UPDATES.md)** - UI theme documentation
+- **[docs/VERIFICATION.md](docs/VERIFICATION.md)** - System verification procedures
+- **[docs/QUICKSTART.md](docs/QUICKSTART.md)** - Quick deployment guide
+- **[docs/HOSTINGER.md](docs/HOSTINGER.md)** - Hostinger-specific deployment
+- **[docs/plan.txt](docs/plan.txt)** - System architecture and planning
 
 ---
 
