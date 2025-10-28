@@ -164,6 +164,19 @@
             margin: 15px 0;
             font-size: 14px;
         }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -172,36 +185,38 @@
         <h1>InvoChain Desktop App</h1>
         <p class="version">Version 1.0.0 (Beta) • Windows & macOS</p>
         
-        <!-- Windows Section -->
-        <div class="platform-section" id="windows-section">
-            <h2><span class="platform-icon">🪟</span>Windows Installation</h2>
-            <div class="system-requirements">
-                <strong>System Requirements:</strong> Windows 10/11 (64-bit), 4GB RAM, 500MB disk space
+        <div class="platforms-grid">
+            <!-- Windows Section -->
+            <div class="platform-section" id="windows-section">
+                <h2><span class="platform-icon">🪟</span>Windows Installation</h2>
+                <div class="system-requirements">
+                    <strong>System Requirements:</strong> Windows 10/11 (64-bit), 4GB RAM, 500MB disk space
+                </div>
+                <ol class="steps">
+                    <li>Click the download button below to get the installer</li>
+                    <li>Run <code>InvoChain-Setup.exe</code> from your Downloads folder</li>
+                    <li>Follow the installation wizard</li>
+                    <li>Choose installation directory (default: <code>C:\Program Files\InvoChain</code>)</li>
+                    <li>Launch InvoChain from your Start Menu or Desktop shortcut</li>
+                </ol>
+                <a href="#" class="download-btn" onclick="downloadWindows(); return false;">📥 Download for Windows (.exe)</a>
             </div>
-            <ol class="steps">
-                <li>Click the download button below to get the installer</li>
-                <li>Run <code>InvoChain-Setup.exe</code> from your Downloads folder</li>
-                <li>Follow the installation wizard</li>
-                <li>Choose installation directory (default: <code>C:\Program Files\InvoChain</code>)</li>
-                <li>Launch InvoChain from your Start Menu or Desktop shortcut</li>
-            </ol>
-            <a href="#" class="download-btn" onclick="downloadWindows(); return false;">📥 Download for Windows (.exe)</a>
-        </div>
-        
-        <!-- macOS Section -->
-        <div class="platform-section" id="mac-section">
-            <h2><span class="platform-icon">🍎</span>macOS Installation</h2>
-            <div class="system-requirements">
-                <strong>System Requirements:</strong> macOS 11 Big Sur or later, 4GB RAM, 500MB disk space
+            
+            <!-- macOS Section -->
+            <div class="platform-section" id="mac-section">
+                <h2><span class="platform-icon">🍎</span>macOS Installation</h2>
+                <div class="system-requirements">
+                    <strong>System Requirements:</strong> macOS 11 Big Sur or later, 4GB RAM, 500MB disk space
+                </div>
+                <ol class="steps">
+                    <li>Click the download button below to get the <code>.dmg</code> file</li>
+                    <li>Open the downloaded <code>InvoChain.dmg</code></li>
+                    <li>Drag the InvoChain icon to your Applications folder</li>
+                    <li>Right-click InvoChain in Applications and select "Open" (first time only)</li>
+                    <li>Click "Open" in the security dialog to allow the app to run</li>
+                </ol>
+                <a href="#" class="download-btn" onclick="downloadMac(); return false;">📥 Download for Mac (.dmg)</a>
             </div>
-            <ol class="steps">
-                <li>Click the download button below to get the <code>.dmg</code> file</li>
-                <li>Open the downloaded <code>InvoChain.dmg</code></li>
-                <li>Drag the InvoChain icon to your Applications folder</li>
-                <li>Right-click InvoChain in Applications and select "Open" (first time only)</li>
-                <li>Click "Open" in the security dialog to allow the app to run</li>
-            </ol>
-            <a href="#" class="download-btn" onclick="downloadMac(); return false;">📥 Download for Mac (.dmg)</a>
         </div>
         
         <div class="note">

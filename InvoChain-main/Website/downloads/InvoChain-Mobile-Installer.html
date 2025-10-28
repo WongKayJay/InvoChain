@@ -155,6 +155,19 @@
             font-family: 'Courier New', monospace;
             font-size: 13px;
         }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -163,30 +176,32 @@
         <h1>InvoChain Mobile App</h1>
         <p class="version">Version 1.0.0 (Beta) • iOS & Android</p>
         
-        <!-- iOS Section -->
-        <div class="platform-section" id="ios-section">
-            <h2><span class="platform-icon">🍎</span>iOS Installation</h2>
-            <ol class="steps">
-                <li>Open this page on your iPhone or iPad</li>
-                <li>Tap the download button below to get the <code>.ipa</code> file</li>
-                <li>Install <strong>AltStore</strong> or <strong>TestFlight</strong> (for beta testing)</li>
-                <li>Use AltStore to sideload the app, or wait for TestFlight invitation</li>
-                <li>Trust the developer certificate in <code>Settings → General → VPN & Device Management</code></li>
-            </ol>
-            <a href="#" class="download-btn" onclick="downloadiOS(); return false;">📥 Download for iOS (.ipa)</a>
-        </div>
-        
-        <!-- Android Section -->
-        <div class="platform-section" id="android-section">
-            <h2><span class="platform-icon">🤖</span>Android Installation</h2>
-            <ol class="steps">
-                <li>Tap the download button below to get the <code>.apk</code> file</li>
-                <li>Open <code>Settings → Security → Unknown Sources</code> and enable installation from unknown sources</li>
-                <li>Open your Downloads folder and tap the <code>InvoChain.apk</code> file</li>
-                <li>Follow the on-screen prompts to install</li>
-                <li>Launch InvoChain from your app drawer</li>
-            </ol>
-            <a href="#" class="download-btn" onclick="downloadAndroid(); return false;">📥 Download for Android (.apk)</a>
+        <div class="platforms-grid">
+            <!-- iOS Section -->
+            <div class="platform-section" id="ios-section">
+                <h2><span class="platform-icon">🍎</span>iOS Installation</h2>
+                <ol class="steps">
+                    <li>Open this page on your iPhone or iPad</li>
+                    <li>Tap the download button below to get the <code>.ipa</code> file</li>
+                    <li>Install <strong>AltStore</strong> or <strong>TestFlight</strong> (for beta testing)</li>
+                    <li>Use AltStore to sideload the app, or wait for TestFlight invitation</li>
+                    <li>Trust the developer certificate in <code>Settings → General → VPN & Device Management</code></li>
+                </ol>
+                <a href="#" class="download-btn" onclick="downloadiOS(); return false;">📥 Download for iOS (.ipa)</a>
+            </div>
+            
+            <!-- Android Section -->
+            <div class="platform-section" id="android-section">
+                <h2><span class="platform-icon">🤖</span>Android Installation</h2>
+                <ol class="steps">
+                    <li>Tap the download button below to get the <code>.apk</code> file</li>
+                    <li>Open <code>Settings → Security → Unknown Sources</code> and enable installation from unknown sources</li>
+                    <li>Open your Downloads folder and tap the <code>InvoChain.apk</code> file</li>
+                    <li>Follow the on-screen prompts to install</li>
+                    <li>Launch InvoChain from your app drawer</li>
+                </ol>
+                <a href="#" class="download-btn" onclick="downloadAndroid(); return false;">📥 Download for Android (.apk)</a>
+            </div>
         </div>
         
         <div class="note">
