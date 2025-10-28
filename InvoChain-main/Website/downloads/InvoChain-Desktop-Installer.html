@@ -173,7 +173,7 @@
         <p class="version">Version 1.0.0 (Beta) • Windows & macOS</p>
         
         <!-- Windows Section -->
-        <div class="platform-section">
+        <div class="platform-section" id="windows-section">
             <h2><span class="platform-icon">🪟</span>Windows Installation</h2>
             <div class="system-requirements">
                 <strong>System Requirements:</strong> Windows 10/11 (64-bit), 4GB RAM, 500MB disk space
@@ -189,7 +189,7 @@
         </div>
         
         <!-- macOS Section -->
-        <div class="platform-section">
+        <div class="platform-section" id="mac-section">
             <h2><span class="platform-icon">🍎</span>macOS Installation</h2>
             <div class="system-requirements">
                 <strong>System Requirements:</strong> macOS 11 Big Sur or later, 4GB RAM, 500MB disk space
@@ -223,6 +223,18 @@
     </div>
     
     <script>
+        // Auto-scroll to platform section if hash is present
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash === 'windows' || hash === 'mac') {
+                const section = document.querySelector(`#${hash}-section`);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    section.style.animation = 'highlight 1s ease';
+                }
+            }
+        });
+        
         function downloadWindows() {
             const content = `InvoChain Desktop Application - Windows
 ========================================

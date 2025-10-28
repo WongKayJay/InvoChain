@@ -164,7 +164,7 @@
         <p class="version">Version 1.0.0 (Beta) • iOS & Android</p>
         
         <!-- iOS Section -->
-        <div class="platform-section">
+        <div class="platform-section" id="ios-section">
             <h2><span class="platform-icon">🍎</span>iOS Installation</h2>
             <ol class="steps">
                 <li>Open this page on your iPhone or iPad</li>
@@ -177,7 +177,7 @@
         </div>
         
         <!-- Android Section -->
-        <div class="platform-section">
+        <div class="platform-section" id="android-section">
             <h2><span class="platform-icon">🤖</span>Android Installation</h2>
             <ol class="steps">
                 <li>Tap the download button below to get the <code>.apk</code> file</li>
@@ -207,6 +207,18 @@
     </div>
     
     <script>
+        // Auto-scroll to platform section if hash is present
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash === 'ios' || hash === 'android') {
+                const section = document.querySelector(`#${hash}-section`);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    section.style.animation = 'highlight 1s ease';
+                }
+            }
+        });
+        
         function downloadAndroid() {
             // Create a mock APK info file
             const content = `InvoChain Android Application Package

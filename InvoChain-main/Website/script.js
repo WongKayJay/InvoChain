@@ -367,23 +367,39 @@ function applyParallax(section, scrollY) {
 
 // ========== Download Handlers ==========
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile download button handler
-    const mobileDownloadBtn = document.querySelector('.btn-download-mobile');
-    if (mobileDownloadBtn) {
-        mobileDownloadBtn.addEventListener('click', (e) => {
+    // iOS download button handler
+    const iosDownloadBtn = document.querySelector('.btn-download-ios');
+    if (iosDownloadBtn) {
+        iosDownloadBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Open the mobile installer page in a new tab
-            window.open('downloads/InvoChain-Mobile-Installer.html', '_blank');
+            window.open('downloads/InvoChain-Mobile-Installer.html#ios', '_blank');
         });
     }
     
-    // Desktop download button handler
-    const desktopDownloadBtn = document.querySelector('.btn-download-desktop');
-    if (desktopDownloadBtn) {
-        desktopDownloadBtn.addEventListener('click', (e) => {
+    // Android download button handler
+    const androidDownloadBtn = document.querySelector('.btn-download-android');
+    if (androidDownloadBtn) {
+        androidDownloadBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Open the desktop installer page in a new tab
-            window.open('downloads/InvoChain-Desktop-Installer.html', '_blank');
+            window.open('downloads/InvoChain-Mobile-Installer.html#android', '_blank');
+        });
+    }
+    
+    // Windows download button handler
+    const windowsDownloadBtn = document.querySelector('.btn-download-windows');
+    if (windowsDownloadBtn) {
+        windowsDownloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('downloads/InvoChain-Desktop-Installer.html#windows', '_blank');
+        });
+    }
+    
+    // Mac download button handler
+    const macDownloadBtn = document.querySelector('.btn-download-mac');
+    if (macDownloadBtn) {
+        macDownloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('downloads/InvoChain-Desktop-Installer.html#mac', '_blank');
         });
     }
 });
