@@ -162,12 +162,12 @@ npm run build
 ### Deploy to g1t2.drshaiban.cloud
 ```powershell
 # Deploy everything
-.\scripts\deploy-g1t2.bat all
+.\deployment\deploy-g1t2.bat all
 
 # Deploy specific components
-.\scripts\deploy-g1t2.bat website
-.\scripts\deploy-g1t2.bat app
-.\scripts\deploy-g1t2.bat backend
+.\deployment\deploy-g1t2.bat website
+.\deployment\deploy-g1t2.bat app
+.\deployment\deploy-g1t2.bat backend
 ```
 
 ---
@@ -275,7 +275,7 @@ flutter build web --release
 
 # 2. Deploy
 cd ..\..
-.\scripts\deploy-g1t2.bat all
+.\deployment\deploy-g1t2.bat all
 
 # 3. Verify
 # Visit: https://g1t2.drshaiban.cloud
@@ -285,8 +285,9 @@ cd ..\..
 
 ## 📞 Additional Resources
 
-- **Full Deployment Guide**: `docs/DEPLOY-G1T2.md`
-- **Deployment Checklist**: `DEPLOYMENT-CHECKLIST-G1T2.md`
+- **Full Deployment Guide**: `deployment/DEPLOY-G1T2.md`
+- **Deployment Checklist**: `deployment/DEPLOYMENT-CHECKLIST-G1T2.md`
+- **Deployment Folder**: `deployment/` (All deployment files)
 - **Project Navigation**: `NAVIGATION.md`
 - **Backend Setup**: `docs/BACKEND_SETUP.md`
 - **Main README**: `README.md`

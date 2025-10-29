@@ -90,21 +90,23 @@ InvoChain/
 │   ├── routes/             # API endpoints (auth, investments, invoices)
 │   ├── middleware/         # Authentication middleware
 │   └── server.js           # Express server
-├── docs/                    # All documentation
+├── deployment/              # All deployment files
+│   ├── deploy-g1t2.bat     # Windows deployment script
+│   ├── deploy.sh           # Linux deployment script
+│   ├── DEPLOY-G1T2.md      # Deployment guide
+│   ├── nginx-g1t2.conf     # Nginx configuration
+│   └── README.md           # Deployment documentation
+├── docs/                    # Project documentation
 │   ├── AUTHENTICATION_TESTING.md
 │   ├── BACKEND_SETUP.md
-│   ├── DEPLOYMENT.md
 │   ├── FEATURE_UPDATES.md
 │   ├── THEME_UPDATES.md
 │   ├── VERIFICATION.md
-│   ├── QUICKSTART.md
-│   ├── HOSTINGER.md
-│   └── nginx.conf
-├── scripts/                 # Deployment & utility scripts
-│   ├── deploy.sh           # Linux deployment
-│   ├── deploy.bat          # Windows deployment
-│   ├── backup.sh           # Backup script
-│   └── server-setup.sh     # Server configuration
+│   └── QUICKSTART.md
+├── requirements.txt         # Installation requirements
+├── built.txt               # Complete dependency list
+├── plan.txt                # System design overview
+├── COMMANDS.md             # Command reference
 └── README.md               # This file
 ```
 
@@ -200,14 +202,11 @@ cd backend
 
 ##  Deployment
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) or [docs/QUICKSTART.md](docs/QUICKSTART.md) for complete deployment instructions.
+See [deployment/DEPLOY-G1T2.md](deployment/DEPLOY-G1T2.md) or [docs/QUICKSTART.md](docs/QUICKSTART.md) for complete deployment instructions.
 
 **Available Scripts:**
-- `scripts/deploy.sh` - Linux/Mac deployment
-- `scripts/deploy.bat` - Windows deployment
-- `scripts/backup.sh` - Backup database and files
-- `scripts/server-setup.sh` - Initial server configuration
-
+- `deployment/deploy-g1t2.bat` - Windows deployment to g1t2.drshaiban.cloud
+- `deployment/deploy.sh` - Linux/Mac deployment
 ---
 
 ##  Testing
@@ -229,17 +228,26 @@ flutter test     # Run tests
 
 ##  Documentation
 
-All documentation is located in the `docs/` folder:
+### Core Documentation (Root Level)
+- **[requirements.txt](requirements.txt)** - Installation requirements and setup guide
+- **[built.txt](built.txt)** - Complete dependency list with versions
+- **[plan.txt](plan.txt)** - System design and architecture overview
+- **[COMMANDS.md](COMMANDS.md)** - Command reference guide
+- **[PROJECT-VERIFICATION.md](PROJECT-VERIFICATION.md)** - Project verification checklist
 
+### Deployment Documentation (deployment/)
+- **[deployment/DEPLOY-G1T2.md](deployment/DEPLOY-G1T2.md)** - Complete deployment guide
+- **[deployment/DEPLOYMENT-CHECKLIST-G1T2.md](deployment/DEPLOYMENT-CHECKLIST-G1T2.md)** - Step-by-step checklist
+- **[deployment/HOSTINGER.md](deployment/HOSTINGER.md)** - Hostinger DNS configuration
+- **[deployment/README.md](deployment/README.md)** - Deployment folder guide
+
+### Project Documentation (docs/)
 - **[docs/AUTHENTICATION_TESTING.md](docs/AUTHENTICATION_TESTING.md)** - Authentication testing guide
 - **[docs/BACKEND_SETUP.md](docs/BACKEND_SETUP.md)** - Backend setup instructions
-- **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** - Complete deployment guide
 - **[docs/FEATURE_UPDATES.md](docs/FEATURE_UPDATES.md)** - Feature updates and changelog
 - **[docs/THEME_UPDATES.md](docs/THEME_UPDATES.md)** - UI theme documentation
 - **[docs/VERIFICATION.md](docs/VERIFICATION.md)** - System verification procedures
-- **[docs/QUICKSTART.md](docs/QUICKSTART.md)** - Quick deployment guide
-- **[docs/HOSTINGER.md](docs/HOSTINGER.md)** - Hostinger-specific deployment
-- **[docs/plan.txt](docs/plan.txt)** - System architecture and planning
+- **[docs/QUICKSTART.md](docs/QUICKSTART.md)** - Quick start guide
 
 ---
 

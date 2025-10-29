@@ -26,22 +26,19 @@ Type: A    Name: app.g1t2    Value: [Your Server IP]    TTL: 14400
 ## ✅ Verified Files
 
 ### Deployment Scripts
-- ✅ `scripts/deploy-g1t2.bat` - **USE THIS for deployment**
-- ✅ `scripts/deploy.bat` - Updated (legacy, redirects to deploy-g1t2.bat)
-- ℹ️ `scripts/deploy-g2t1.bat` - Old version (kept for reference)
+- ✅ `deployment/deploy-g1t2.bat` - **USE THIS for deployment**
+- ✅ `deployment/deploy.sh` - Linux/Mac deployment script
 
 ### Nginx Configuration
-- ✅ `docs/nginx-g1t2.conf` - **USE THIS for server setup**
+- ✅ `deployment/nginx-g1t2.conf` - **USE THIS for server setup**
   - Two server blocks (website + app subdomain)
   - Separate SSL certificates
   - CORS properly configured
-- ℹ️ `docs/nginx-g2t1.conf` - Old version (kept for reference)
 
 ### Documentation
-- ✅ `docs/DEPLOY-G1T2.md` - Complete deployment guide (500+ lines)
-- ✅ `DEPLOYMENT-CHECKLIST-G1T2.md` - Step-by-step checklist
-- ✅ `DEPLOYMENT-CHECKLIST.md` - Updated with g1t2 domains
-- ✅ `DEPLOYMENT-STATUS.md` - Configuration summary
+- ✅ `deployment/DEPLOY-G1T2.md` - Complete deployment guide (500+ lines)
+- ✅ `deployment/DEPLOYMENT-CHECKLIST-G1T2.md` - Step-by-step checklist
+- ✅ `deployment/DEPLOYMENT-STATUS.md` - Configuration summary
 - ✅ `COMMANDS.md` - Updated PowerShell commands reference
 - ✅ `README.md` - Live demo link updated to g1t2
 
@@ -177,8 +174,7 @@ pm2 startup
 ## 🎯 Key Changes from Previous Setup
 
 ### Domain Structure
-- **Old**: g2t1.drshaiban.cloud with `/app` path
-- **New**: Separate subdomain app.g1t2.drshaiban.cloud
+- **Current**: g1t2.drshaiban.cloud with separate app subdomain (app.g1t2.drshaiban.cloud)
 
 ### Benefits
 ✅ Cleaner URLs (no `/app` path)  

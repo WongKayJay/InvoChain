@@ -1,0 +1,310 @@
+# InvoChain - Complete Dependency List (Built With)
+
+Generated: October 29, 2025
+
+## ══════════════════════════════════════════════════════════════
+## BACKEND DEPENDENCIES (Node.js/Express API)
+## ══════════════════════════════════════════════════════════════
+
+### Runtime Environment
+- Node.js: v22.17.1 (or v20.x+)
+- npm: 10.x+
+
+### Core Framework
+- express: ^4.18.2              # Web framework for Node.js
+- cors: ^2.8.5                  # Cross-Origin Resource Sharing
+- dotenv: ^16.3.1               # Environment variable management
+
+### Authentication & Security
+- jsonwebtoken: ^9.0.2          # JWT token generation and validation
+- bcrypt: ^5.1.1                # Password hashing (10 salt rounds)
+- express-validator: ^7.0.1     # Input validation middleware
+
+### Database
+- pg: ^8.11.3                   # PostgreSQL client (production)
+- sqlite3: ^5.1.7               # SQLite client (development/testing)
+
+### Development Tools
+- nodemon: ^3.0.1               # Auto-restart on file changes
+
+### Backend File Structure
+backend/
+├── server.js                    # Express server entry point
+├── routes/
+│   ├── auth.js                 # Authentication endpoints
+│   ├── investments.js          # Investment CRUD operations
+│   └── invoices.js             # Invoice CRUD operations
+├── models/
+│   ├── User.js                 # PostgreSQL user model
+│   ├── UserSQLite.js           # SQLite user model
+│   ├── Investment.js           # PostgreSQL investment model
+│   ├── InvestmentSQLite.js     # SQLite investment model
+│   ├── Invoice.js              # PostgreSQL invoice model
+│   └── InvoiceSQLite.js        # SQLite invoice model
+├── database/
+│   ├── connection.js           # PostgreSQL connection
+│   ├── connection-sqlite.js    # SQLite connection
+│   └── invochain.db            # SQLite database file
+├── middleware/
+│   └── auth.js                 # JWT authentication middleware
+└── package.json
+
+## ══════════════════════════════════════════════════════════════
+## FRONTEND - FLUTTER WEB APP
+## ══════════════════════════════════════════════════════════════
+
+### Runtime Environment
+- Flutter SDK: 3.35.6+
+- Dart SDK: 3.5.6+ (included with Flutter)
+
+### Core Dependencies
+- flutter: sdk: flutter         # Flutter framework
+- cupertino_icons: ^1.0.2       # iOS-style icons
+- provider: ^6.0.5              # State management
+
+### UI & Design
+- google_fonts: ^6.1.0          # Custom fonts from Google Fonts
+- flutter_svg: ^2.0.9           # SVG rendering support
+
+### Utilities
+- intl: ^0.18.1                 # Internationalization and date formatting
+- crypto: ^3.0.3                # Cryptographic functions for blockchain simulation
+- shared_preferences: ^2.2.2    # Local storage for user data
+- path: ^1.8.3                  # File path manipulation
+- sqflite: ^2.3.0               # SQLite database for local storage
+
+### Development Dependencies
+- flutter_test: sdk: flutter    # Testing framework
+- flutter_lints: ^3.0.0         # Dart linting rules
+
+### Flutter App Structure
+frontend/mobile-app/
+├── lib/
+│   ├── main.dart               # App entry point
+│   ├── screens/
+│   │   ├── main_navigation.dart      # Bottom navigation
+│   │   ├── home_screen.dart          # Dashboard
+│   │   ├── invest_screen.dart        # Investment opportunities
+│   │   ├── invoices_screen.dart      # Invoice management
+│   │   ├── portfolio_screen.dart     # Portfolio tracking
+│   │   ├── profile_screen.dart       # User profile
+│   │   └── blockchain_screen.dart    # Blockchain transactions
+│   ├── services/
+│   │   ├── theme_provider.dart       # Theme management
+│   │   └── app_data_provider.dart    # Data state management
+│   └── widgets/
+│       ├── stat_card.dart            # Statistic display cards
+│       └── action_card.dart          # Action buttons
+├── pubspec.yaml
+└── web/                        # Web-specific files
+
+### Build Output
+- Production build: frontend/mobile-app/build/web/
+- Build size: ~16-20 MB (optimized)
+- Font tree-shaking: 99.4% reduction
+- Target platforms: Web (Chrome, Firefox, Safari, Edge)
+
+## ══════════════════════════════════════════════════════════════
+## FRONTEND - MARKETING WEBSITE
+## ══════════════════════════════════════════════════════════════
+
+### Runtime Environment
+- Node.js: v22.17.1 (or v20.x+)
+- npm: 10.x+
+
+### Build Tool
+- vite: ^7.1.9                  # Next-generation frontend build tool
+
+### Core Technologies
+- HTML5                         # Semantic markup
+- CSS3                          # Modern styling with animations
+- JavaScript (ES6+)             # Vanilla JavaScript (no framework)
+
+### Website Structure
+frontend/website/
+├── index.html                  # Main landing page
+├── styles.css                  # Global styles and animations
+├── script.js                   # Interactive functionality
+├── downloads/
+│   ├── InvoChain-Mobile-Installer.html
+│   └── InvoChain-Desktop-Installer.html
+├── package.json
+└── dist/                       # Production build output
+
+### Build Output
+- Production build: frontend/website/dist/
+- Build size: 16.68 KB (gzipped: 4.02 KB)
+- Optimization: Minified, tree-shaken, compressed
+
+## ══════════════════════════════════════════════════════════════
+## DEPLOYMENT & INFRASTRUCTURE
+## ══════════════════════════════════════════════════════════════
+
+### Web Server
+- Nginx: 1.18+ (or 1.24+)       # Reverse proxy and static file server
+- SSL/TLS: Certbot/Let's Encrypt # HTTPS certificates
+
+### Process Management
+- PM2: Latest                   # Node.js process manager
+
+### Operating System
+- Ubuntu: 20.04 LTS / 22.04 LTS # Server OS
+- Windows 11                    # Development environment
+- PowerShell: 5.1               # Windows shell
+
+### Deployment Tools
+- SSH/SCP                       # Secure file transfer
+- Git: Latest                   # Version control
+
+### Domains & DNS
+- Main Website: g1t2.drshaiban.cloud
+- Web Application: app.g1t2.drshaiban.cloud
+- DNS Provider: Hostinger
+
+## ══════════════════════════════════════════════════════════════
+## DEVELOPMENT TOOLS
+## ══════════════════════════════════════════════════════════════
+
+### Code Editors
+- Visual Studio Code (recommended)
+- Any text editor with Dart/Flutter support
+
+### Version Control
+- Git: 2.x+
+- GitHub repository
+
+### Testing Tools
+- Postman / Thunder Client      # API testing
+- Chrome DevTools               # Frontend debugging
+- Flutter DevTools              # Flutter debugging
+
+### Development Scripts
+- PowerShell custom commands    # invochain, invochain-web, invochain-api, etc.
+- Batch deployment scripts      # deploy-g1t2.bat
+
+## ══════════════════════════════════════════════════════════════
+## INSTALLATION & SETUP
+## ══════════════════════════════════════════════════════════════
+
+### Backend Setup
+```bash
+cd backend
+npm install
+# Creates node_modules/ with all dependencies
+```
+
+### Frontend Website Setup
+```bash
+cd frontend/website
+npm install
+npm run build
+# Creates dist/ folder with production build
+```
+
+### Flutter App Setup
+```bash
+cd frontend/mobile-app
+flutter pub get
+flutter build web --release
+# Creates build/web/ folder with production build
+```
+
+## ══════════════════════════════════════════════════════════════
+## PACKAGE COUNTS
+## ══════════════════════════════════════════════════════════════
+
+- Backend (npm): 271 packages (including dependencies)
+- Frontend Website (npm): ~50 packages (including Vite ecosystem)
+- Flutter App (pub): 20+ direct dependencies, 100+ transitive
+
+## ══════════════════════════════════════════════════════════════
+## KEY FEATURES ENABLED BY DEPENDENCIES
+## ══════════════════════════════════════════════════════════════
+
+### Authentication (bcrypt + JWT)
+- Secure password hashing with 10 salt rounds
+- Token-based authentication with 7-day expiration
+- Protected API routes
+
+### Database (SQLite + PostgreSQL)
+- SQLite for development/testing
+- PostgreSQL ready for production
+- ORM-free models for flexibility
+
+### State Management (Provider)
+- Reactive state updates
+- Scoped providers for data isolation
+- Efficient rebuilds
+
+### UI/UX (Flutter + Google Fonts)
+- Material Design components
+- Custom animations and transitions
+- Responsive layouts for all screen sizes
+
+### Build Optimization (Vite + Flutter)
+- Hot module replacement (HMR) for fast development
+- Tree-shaking to remove unused code
+- Code splitting for optimal loading
+- Font subsetting (99.4% reduction)
+
+## ══════════════════════════════════════════════════════════════
+## VERSION COMPATIBILITY
+## ══════════════════════════════════════════════════════════════
+
+### Minimum Requirements
+- Node.js: v20.0.0+
+- Flutter: v3.35.0+
+- Dart: v3.5.0+
+- npm: v10.0.0+
+
+### Recommended Versions (Tested)
+- Node.js: v22.17.1
+- Flutter: v3.35.6
+- npm: v10.9.2
+- Dart: v3.5.6
+
+### Browser Support
+- Chrome/Edge: Latest 2 versions
+- Firefox: Latest 2 versions
+- Safari: Latest 2 versions
+- Mobile browsers: iOS Safari 14+, Chrome Mobile
+
+## ══════════════════════════════════════════════════════════════
+## NOTES
+## ══════════════════════════════════════════════════════════════
+
+1. All dependencies are pinned with ^ to allow minor/patch updates
+2. SQLite is used for development; switch to PostgreSQL for production
+3. Flutter web build requires 2-4 GB RAM for compilation
+4. PM2 manages backend process with auto-restart on crash
+5. Nginx handles SSL termination and static file serving
+6. CORS is configured to allow app.g1t2.drshaiban.cloud
+7. JWT secret should be changed in production (.env file)
+
+## ══════════════════════════════════════════════════════════════
+## SECURITY CONSIDERATIONS
+## ══════════════════════════════════════════════════════════════
+
+- bcrypt salt rounds: 10 (balance of security and performance)
+- JWT expiration: 7 days (can be adjusted in backend/.env)
+- HTTPS enforced on all production domains
+- SQL injection prevented via parameterized queries
+- CORS restricted to specific domains
+- Environment variables for sensitive data
+
+## ══════════════════════════════════════════════════════════════
+## LICENSE INFORMATION
+## ══════════════════════════════════════════════════════════════
+
+All dependencies are licensed under permissive licenses:
+- MIT License: Most npm and pub packages
+- BSD License: Some core libraries
+- Apache 2.0: Some Google packages
+
+Project License: ISC
+
+---
+
+For detailed setup instructions, see: README.md
+For deployment guide, see: docs/DEPLOY-G1T2.md
+For command reference, see: COMMANDS.md

@@ -1,0 +1,307 @@
+# InvoChain - Project Dependencies and Requirements
+
+## ══════════════════════════════════════════════════════════════
+## SYSTEM REQUIREMENTS
+## ══════════════════════════════════════════════════════════════
+
+### Development Environment
+- Operating System: Windows 10/11, macOS 10.15+, or Ubuntu 20.04+
+- RAM: Minimum 8 GB (16 GB recommended for Flutter builds)
+- Storage: 10 GB free space
+- Internet connection: Required for dependency downloads
+
+### Required Software
+
+#### 1. Node.js & npm
+Version: v20.x or higher (v22.17.1 tested)
+Download: https://nodejs.org/
+Verify: node -v && npm -v
+
+#### 2. Flutter SDK
+Version: 3.35.0 or higher (3.35.6 tested)
+Download: https://flutter.dev/docs/get-started/install
+Verify: flutter --version
+
+#### 3. Git
+Version: 2.x or higher
+Download: https://git-scm.com/
+Verify: git --version
+
+#### 4. Code Editor (Choose one)
+- Visual Studio Code (recommended) - https://code.visualstudio.com/
+- Android Studio
+- IntelliJ IDEA
+- Any text editor
+
+## ══════════════════════════════════════════════════════════════
+## BACKEND DEPENDENCIES (Node.js)
+## ══════════════════════════════════════════════════════════════
+
+### Installation
+```bash
+cd backend
+npm install
+```
+
+### Production Dependencies
+bcrypt@^5.1.1                   # Password hashing
+cors@^2.8.5                     # Cross-Origin Resource Sharing
+dotenv@^16.3.1                  # Environment variables
+express@^4.18.2                 # Web framework
+express-validator@^7.0.1        # Input validation
+jsonwebtoken@^9.0.2             # JWT authentication
+pg@^8.11.3                      # PostgreSQL database client
+sqlite3@^5.1.7                  # SQLite database client
+
+### Development Dependencies
+nodemon@^3.0.1                  # Auto-restart on changes
+
+## ══════════════════════════════════════════════════════════════
+## FRONTEND WEBSITE DEPENDENCIES (Vite)
+## ══════════════════════════════════════════════════════════════
+
+### Installation
+```bash
+cd frontend/website
+npm install
+```
+
+### Development Dependencies
+vite@^7.1.9                     # Build tool and dev server
+
+## ══════════════════════════════════════════════════════════════
+## FRONTEND APP DEPENDENCIES (Flutter)
+## ══════════════════════════════════════════════════════════════
+
+### Installation
+```bash
+cd frontend/mobile-app
+flutter pub get
+```
+
+### Production Dependencies
+flutter                         # Flutter SDK
+cupertino_icons@^1.0.2         # iOS-style icons
+provider@^6.0.5                # State management
+google_fonts@^6.1.0            # Custom fonts
+flutter_svg@^2.0.9             # SVG rendering
+intl@^0.18.1                   # Internationalization
+sqflite@^2.3.0                 # Local database
+path@^1.8.3                    # Path utilities
+crypto@^3.0.3                  # Cryptographic functions
+shared_preferences@^2.2.2      # Local storage
+
+### Development Dependencies
+flutter_test                    # Testing framework
+flutter_lints@^3.0.0           # Linting rules
+
+## ══════════════════════════════════════════════════════════════
+## DEPLOYMENT REQUIREMENTS (Production Server)
+## ══════════════════════════════════════════════════════════════
+
+### Server Software
+nginx@1.18+                     # Web server and reverse proxy
+pm2@latest                      # Node.js process manager
+certbot                         # SSL certificate management
+ufw                            # Firewall (optional)
+
+### Server Setup
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install nginx nodejs npm
+sudo npm install -g pm2
+sudo apt install certbot python3-certbot-nginx
+```
+
+## ══════════════════════════════════════════════════════════════
+## OPTIONAL TOOLS
+## ══════════════════════════════════════════════════════════════
+
+### API Testing
+- Postman - https://www.postman.com/
+- Thunder Client (VS Code extension)
+- curl (command-line)
+
+### Database Management
+- pgAdmin (for PostgreSQL) - https://www.pgadmin.org/
+- DB Browser for SQLite - https://sqlitebrowser.org/
+
+### Version Control
+- GitHub Desktop - https://desktop.github.com/
+- GitKraken - https://www.gitkraken.com/
+
+## ══════════════════════════════════════════════════════════════
+## QUICK START INSTALLATION GUIDE
+## ══════════════════════════════════════════════════════════════
+
+### Step 1: Clone Repository
+```bash
+git clone https://github.com/WongKayJay/InvoChain.git
+cd InvoChain
+```
+
+### Step 2: Install Backend Dependencies
+```bash
+cd backend
+npm install
+cd ..
+```
+
+### Step 3: Install Website Dependencies
+```bash
+cd frontend/website
+npm install
+cd ../..
+```
+
+### Step 4: Install Flutter Dependencies
+```bash
+cd frontend/mobile-app
+flutter pub get
+cd ../..
+```
+
+### Step 5: Configure Environment
+```bash
+# Create backend/.env file
+cd backend
+echo "PORT=3000" > .env
+echo "NODE_ENV=development" >> .env
+echo "JWT_SECRET=your_secret_key_here" >> .env
+echo "DB_PATH=./database/invochain.db" >> .env
+cd ..
+```
+
+### Step 6: Run Development Servers
+```bash
+# Terminal 1: Backend
+cd backend
+npm start
+
+# Terminal 2: Website
+cd frontend/website
+npm run dev
+
+# Terminal 3: Flutter App
+cd frontend/mobile-app
+flutter build web
+python -m http.server 8080 -d build/web
+```
+
+Or use PowerShell commands:
+```powershell
+invochain-all    # Starts all services in separate windows
+```
+
+## ══════════════════════════════════════════════════════════════
+## VERIFICATION COMMANDS
+## ══════════════════════════════════════════════════════════════
+
+### Check Installations
+```bash
+# Node.js
+node -v          # Should show v20.x or higher
+
+# npm
+npm -v           # Should show v10.x or higher
+
+# Flutter
+flutter --version # Should show 3.35.x or higher
+
+# Git
+git --version    # Should show 2.x or higher
+```
+
+### Test Backend
+```bash
+cd backend
+npm start
+# Open browser: http://localhost:3000/api/health
+# Should see: {"status":"OK",...}
+```
+
+### Test Website
+```bash
+cd frontend/website
+npm run dev
+# Open browser: http://localhost:5173
+# Should see InvoChain landing page
+```
+
+### Test Flutter App
+```bash
+cd frontend/mobile-app
+flutter build web
+python -m http.server 8080 -d build/web
+# Open browser: http://localhost:8080
+# Should see InvoChain app
+```
+
+## ══════════════════════════════════════════════════════════════
+## TROUBLESHOOTING
+## ══════════════════════════════════════════════════════════════
+
+### Issue: npm install fails
+Solution: Clear npm cache
+```bash
+npm cache clean --force
+npm install
+```
+
+### Issue: Flutter build fails
+Solution: Upgrade Flutter and clean build
+```bash
+flutter upgrade
+flutter clean
+flutter pub get
+flutter build web
+```
+
+### Issue: Port already in use
+Solution: Kill process or use different port
+```bash
+# Windows
+netstat -ano | findstr :3000
+taskkill /PID <PID> /F
+
+# Linux/Mac
+lsof -i :3000
+kill -9 <PID>
+```
+
+### Issue: Permission denied
+Solution: Run with appropriate permissions
+```bash
+# Linux/Mac
+sudo npm install
+sudo chown -R $(whoami) ~/.npm
+
+# Windows
+# Run terminal as Administrator
+```
+
+## ══════════════════════════════════════════════════════════════
+## DOCUMENTATION REFERENCES
+## ══════════════════════════════════════════════════════════════
+
+- Complete dependency list: built.txt
+- System design and logic: plan.txt
+- Project overview: README.md
+- Deployment guide: docs/DEPLOY-G1T2.md
+- Command reference: COMMANDS.md
+- Project structure: NAVIGATION.md
+
+## ══════════════════════════════════════════════════════════════
+## SUPPORT
+## ══════════════════════════════════════════════════════════════
+
+For issues or questions:
+1. Check documentation files in docs/ folder
+2. Review troubleshooting section above
+3. Check GitHub issues: https://github.com/WongKayJay/InvoChain/issues
+4. Contact: WongKayJay on GitHub
+
+---
+
+Last Updated: October 29, 2025
