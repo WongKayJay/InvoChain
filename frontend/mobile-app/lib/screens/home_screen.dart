@@ -4,6 +4,7 @@ import '../widgets/stat_card.dart';
 import '../widgets/action_card.dart';
 import '../services/app_data_provider.dart';
 import 'main_navigation.dart';
+import 'blockchain_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -179,10 +180,10 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.timeline,
               color: Colors.orange,
               onTap: () {
-                // Navigate to Portfolio tab (index 3) which shows investments
-                Navigator.of(context).pushReplacement(
+                // Navigate to Blockchain transactions screen
+                Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => const MainNavigation(initialIndex: 3),
+                    builder: (_) => const BlockchainScreen(),
                   ),
                 );
               },

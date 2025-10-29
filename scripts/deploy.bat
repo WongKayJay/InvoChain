@@ -1,15 +1,18 @@
 @echo off
 REM InvoChain Deployment Script for Windows
 REM Purpose: Automate deployment to g1t2.drshaiban.cloud
-REM Usage: deploy.bat [website|app|all]
+REM Usage: deploy.bat [website|app|backend|all]
+REM 
+REM Note: This is a legacy script. Use deploy-g1t2.bat for current deployment.
 
 setlocal enabledelayedexpansion
 
 REM Configuration
 set SERVER=root@drshaiban.cloud
-set REMOTE_DIR=/var/www/invochain
-set LOCAL_WEBSITE_DIR=Website
-set LOCAL_APP_DIR=Application\invochain_app\build\web
+set REMOTE_DIR=/var/www/invochain-g1t2
+set LOCAL_WEBSITE_DIR=frontend\website
+set LOCAL_APP_DIR=frontend\mobile-app\build\web
+set LOCAL_BACKEND_DIR=backend
 
 REM Parse command line argument
 set DEPLOY_TYPE=%1
@@ -19,9 +22,13 @@ echo ========================================
 echo InvoChain Deployment Script
 echo ========================================
 echo.
+echo NOTE: This is a legacy script.
+echo For current deployment, use: deploy-g1t2.bat
+echo.
 
 if "%DEPLOY_TYPE%"=="website" goto deploy_website
 if "%DEPLOY_TYPE%"=="app" goto deploy_app
+if "%DEPLOY_TYPE%"=="backend" goto deploy_backend
 if "%DEPLOY_TYPE%"=="all" goto deploy_all
 if "%DEPLOY_TYPE%"=="help" goto show_help
 goto invalid_option
